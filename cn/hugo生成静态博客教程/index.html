@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag (contains Google-Analytics、Baidu-Tongji)-->
+<head>
+  <!-- Google Analytics -->
+  
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-BLG5MQFL6B"></script>
+    <script type="text/javascript">
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-BLG5MQFL6B');
+    </script>
+  
+
+  <!-- Baidu Tongji -->
+  
+    <script type="text/javascript">
+      // Originial
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?6be000c44461cd93c33b1c76c74bd124";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  <!-- Baidu Push -->
+  
+    <script>
+      (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+          bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+          bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+      })();
+    </script>
+  
+
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+  <meta name="google-site-verification" content="lxDfCplOZbIzjhG34NuQBgu2gdyRlAtMB4utP5AgEBc"/>
+  <meta name="baidu-site-verification" content="PpzM9WxOJU"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="description" content="It&#39;s an Personal blog..."/>
+  <meta name="keyword" content="blog,Blog"/>
+  <link rel="shortcut icon" href="/img/avatar/roguerabbit.jpg"/>
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async="async" defer="defer" src="https://buttons.github.io/buttons.js"></script>
+
+  
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/beantech.min.css"/>
+
+    <!-- Pygments Highlight CSS -->
+    <link rel="stylesheet" href="/css/highlight.css"/>
+    <link rel="stylesheet" href="/css/widget.css"/>
+    <link rel="stylesheet" href="/css/rocket.css"/>
+    <link rel="stylesheet" href="/css/signature.css"/>
+    <link rel="stylesheet" href="/css/catalog.css"/>
+    <link rel="stylesheet" href="/css/livemylife.css"/>
+
+    
+      <!-- wave start -->
+      <link rel="stylesheet" href="/css/wave.css"/>
+      <!-- wave end -->
+    
+
+    
+      <!-- top start (article top hot config) -->
+      <link rel="stylesheet" href="/css/top.css"/>
+      <!-- top end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/scroll.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+      <!-- Search start -->
+      <link rel="stylesheet" href="/css/search.css"/>
+      <!-- Search end -->
+    
+
+    
+      <!-- ThemeColor start -->
+      <link rel="stylesheet" href="/css/themecolor.css"/>
+      <!-- ThemeColor end -->
+    
+
+    
+
+    
+  
+
+  <!-- Custom Fonts -->
+  <!-- <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+  <!-- Hux change font-awesome CDN to qiniu -->
+  <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.5.0/css/font-awesome.min.css" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- Hux Delete, sad but pending in China <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'> <link
+  href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/ css'> -->
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
+
+  <!-- ga & ba script hoook -->
+  <link rel="canonical" href="http://yoursite-url/cn/hugo生成静态博客教程/">
+  <title>
+    
+      使用hugo生成静态博客并部署在GitHub上 - Mockingjay
+    
+  </title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+
+	<body ontouchstart="" class="body--light body--dark">
+
+
+		<!-- ThemeColor -->
+		
+		<!-- ThemeColor -->
+<style type="text/css">
+  .body--light {
+    --light-mode: none;
+    --dark-mode: block;
+  }
+  .body--dark {
+    --light-mode: block;
+    --dark-mode: none;
+  }
+  i.mdui-icon.material-icons.light-mode {
+    display: var(--light-mode);
+  }
+  i.mdui-icon.material-icons.dark-mode {
+    display: var(--dark-mode);
+  }
+</style>
+<div class="toggle" onclick="document.body.classList.toggle('body--dark')">
+  <i class="mdui-icon material-icons light-mode"></i>
+  <i class="mdui-icon material-icons dark-mode"></i>
+</div>
+<script>
+  //getCookieValue
+  function getCookieValue(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b
+      ? b.pop()
+      : '';
+  }
+  let themeMode = 'dark';
+  if (getCookieValue('sb-color-mode') && (getCookieValue('sb-color-mode') !== themeMode)) {
+    let dbody = document.body.classList;
+    themeMode === 'dark' ? dbody.remove('body--dark') : dbody.add('body--dark');
+  }
+
+  //setCookieValue
+  var toggleBtn = document.querySelector(".toggle");
+  toggleBtn.addEventListener("click", function () {
+    var e = document.body.classList.contains("body--dark");
+    var cookieString = e
+      ? "dark"
+      : "light";
+    var exp = new Date();
+    exp.setTime(exp.getTime() + 3 * 24 * 60 * 60 * 1000); //3天过期
+    document.cookie = "sb-color-mode=" + cookieString + ";expires=" + exp.toGMTString() + ";path=/";
+  });
+</script>
+
+		
+
+		<!-- Gitter -->
+		
+		<!-- Gitter -->
+<!-- Docs:https://gitter.im/?utm_source=left-menu-logo -->
+<script>
+  ((window.gitter = {}).chat = {}).options = {
+    room: 'caecarxu/community'
+  };
+</script>
+<script src="https://sidecar.gitter.im/dist/sidecar.v1.js" async defer></script>
+
+		
+
+		<!-- Navigation (contains search)-->
+		<!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">海&#39;s Blog</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- Known Issue, found by Hux: <nav>'s height woule be hold on by its content. so, when navbar scale out, the <nav> will cover tags. also mask any touch event of tags, unfortunately. -->
+    <div id="huxblog_navbar">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/">首页</a>
+          </li>
+
+          
+          
+          
+          
+          <li>
+            <a href="/about/">
+              
+              关于
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/archive/">
+              
+              归档
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/tags/">
+              
+              标签
+              
+              
+            </a>
+          </li>
+          
+          
+
+          
+          <li>
+            <a class="popup-trigger">
+              <span class="search-icon"></span>搜索</a>
+          </li>
+          
+
+          <!-- LangSelect -->
+          
+          
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container -->
+</nav>
+<!-- progress -->
+<div id="progress">
+  <div class="line" style="width: 0%;"></div>
+</div>
+
+<script>
+  // Drop Bootstarp low-performance Navbar Use customize navbar with high-quality material design animation in high-perf jank-free CSS3 implementation
+  var $body = document.body;
+  var $toggle = document.querySelector('.navbar-toggle');
+  var $navbar = document.querySelector('#huxblog_navbar');
+  var $collapse = document.querySelector('.navbar-collapse');
+
+  $toggle.addEventListener('click', handleMagic)
+
+  function handleMagic(e) {
+    if ($navbar.className.indexOf('in') > 0) {
+      // CLOSE
+      $navbar.className = " ";
+      // wait until animation end.
+      setTimeout(function() {
+        // prevent frequently toggle
+        if ($navbar.className.indexOf('in') < 0) {
+          $collapse.style.height = "0px"
+        }
+      }, 400)
+    } else {
+      // OPEN
+      $collapse.style.height = "auto"
+      $navbar.className += " in";
+    }
+  }
+</script>
+
+
+		<!-- Post Header (contains intro-header、signature、wordcount、busuanzi、waveoverlay) -->
+		<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+
+  <style type="text/css">
+    .body--light {
+      /* intro-header */
+      --intro-header-background-image-url-home: url('/img/header_img/bg2.jpg');
+      --intro-header-background-image-url-post: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/IMG_0820.jpeg');
+      --intro-header-background-image-url-page: url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/IMG_0820.jpeg');
+    }
+    .body--dark {
+      --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/IMG_0820.jpeg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/IMG_0820.jpeg');
+    }
+
+    header.intro-header {
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/IMG_0820.jpeg'); */
+      
+    }
+
+    
+  </style>
+
+
+
+
+
+<header class="intro-header">
+  <!-- Signature -->
+  <div id="signature">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#hugo" title="hugo">hugo</a>
+              
+              <a class="tag" href="/tags/#go" title="go">go</a>
+              
+              <a class="tag" href="/tags/#blog" title="blog">blog</a>
+              
+            </div>
+            <h1>使用hugo生成静态博客并部署在GitHub上</h1>
+            <h2 class="subheading">博客的创建...</h2>
+            <span class="meta">
+              Posted by Ceacar on
+              2021-08-08
+            </span>
+
+
+            
+            
+            <!-- 不蒜子统计 start -->
+            <span class="meta" id="busuanzi_container_page_pv">
+              Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+            </span>
+            <!-- 不蒜子统计 end -->
+            
+
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- waveoverlay start -->
+  <div class="preview-overlay">
+    <svg class="preview-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+        <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path>
+      </defs>
+      <g class="preview-parallax">
+        <use xlink:href="#gentle-wave" x="48" y="0" fill=var(--gentle-wave1)></use>
+        <use xlink:href="#gentle-wave" x="48" y="3" fill=var(--gentle-wave2)></use>
+        <use xlink:href="#gentle-wave" x="48" y="5" fill=var(--gentle-wave3)></use>
+        <use xlink:href="#gentle-wave" x="48" y="7" fill=var(--gentle-wave)></use>
+      </g>
+    </svg>
+  </div>
+  <!-- waveoverlay end -->
+  
+
+</header>
+
+
+
+		<!-- Main Content (Post contains
+	Pager、
+	tip、
+	socialshare、
+	gitalk、gitment、disqus-comment、
+	Catalog、
+	Sidebar、
+	Featured-Tags、
+	Friends Blog、
+	anchorjs、
+	) -->
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
+
+        <h1>简介</h1>
+<p>hugo是一个用Go语言编写的静态网页生成器，只需要一个命令 <strong>hugo</strong> 就可以在几秒钟内生成一个静态的博客页面，被称为世界上最快的网站构建框架，使hugo称为最受欢迎且最热门的静态网站生成器之一。</p>
+<p>我之前使用的是wordpress作为博客的载体，但是wordpress太笨重，对markdown格式的支持不是很好，且打开速度极慢，所以就使用hugo进行博客的撰写，生成静态博客后就可以部署在云服务器上或者GitHub上，这样在国内搜到的云服务器上的博客http://www.mockingj.cn，在国外就是github上的pageshttps://caecarxu.github.io/,这样国内外都有一个比较好的访问速度。</p>
+<h3 id="1、安装hugo">1、安装hugo</h3>
+<p>我使用的系统是windows10，在hugo的<a target="_blank" rel="noopener" href="https://gohugo.io/getting-started/installing">官方文档</a>中，使用[Scoop](scoop install hugo-extended)作为包管理器，用一个命令行就完成下载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop install hugo</span><br></pre></td></tr></table></figure>
+<p>或者是安装hugo的extend版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop install hugo-extended</span><br></pre></td></tr></table></figure>
+<p>安装成功后验证一下，在命令行中输入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo version</span><br></pre></td></tr></table></figure>
+<p>若输出</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hugo</span> v<span class="number">0</span>.<span class="number">86</span>.<span class="number">1</span>-F<span class="number">6821</span>B<span class="number">88</span> windows/amd<span class="number">64</span> BuildDate=<span class="number">2021</span>-<span class="number">07</span>-<span class="number">30</span>T<span class="number">10</span>:<span class="number">13</span>:<span class="number">35</span>Z VendorInfo=gohugoio</span><br></pre></td></tr></table></figure>
+<p>则为成功安装</p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/blog.png" alt="hugo version"></p>
+<p>当然不想用windows的包管理器，可以使用git进行下载</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="regexp">//gi</span>thub.com<span class="regexp">/gohugoio/</span>hugo.git	<span class="comment">#将hugo下载至命令行所在文件夹</span></span><br></pre></td></tr></table></figure>
+<p>然后在右击windows中的此电脑，在选择框中选择属性-&gt;高级系统设置-&gt;环境变量-&gt;系统变量-&gt;Path-&gt;编辑，将刚刚的hugo文件夹加入Path中</p>
+<p>重启电脑，执行hugo version命令，验证安装。</p>
+<h3 id="2、使用hugo">2、使用hugo</h3>
+<p>在命令行中执行hugo help可以查看hugo的基本使用方法：</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">hugo is the main command, used to <span class="keyword">build</span> your Hugo site.</span><br><span class="line"></span><br><span class="line">Hugo <span class="keyword">is</span> a Fast <span class="keyword">and</span> Flexible Static Site Generator</span><br><span class="line">built <span class="keyword">with</span> love <span class="keyword">by</span> spf13 <span class="keyword">and</span> friends <span class="keyword">in</span> Go.</span><br><span class="line"></span><br><span class="line">Complete documentation <span class="keyword">is</span> available at http://gohugo.io/.</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  hugo [flags]</span><br><span class="line">  hugo [command]</span><br><span class="line"></span><br><span class="line">Available Commands:</span><br><span class="line">  config      Print the site configuration</span><br><span class="line">  convert     Convert your content <span class="keyword">to</span> different formats</span><br><span class="line">  deploy      Deploy your site <span class="keyword">to</span> a Cloud provider.</span><br><span class="line">  env         Print Hugo version <span class="keyword">and</span> environment info</span><br><span class="line">  gen         A <span class="keyword">collection</span> of several useful generators.</span><br><span class="line">  help        Help about <span class="keyword">any</span> command</span><br><span class="line">  import      Import your site <span class="keyword">from</span> others.</span><br><span class="line">  list        Listing out various types of content</span><br><span class="line">  mod         Various Hugo Modules helpers.</span><br><span class="line">  new         <span class="keyword">Create</span> new content <span class="keyword">for</span> your site</span><br><span class="line">  server      A high performance webserver</span><br><span class="line">  version     Print the version <span class="keyword">number</span> of Hugo</span><br><span class="line"></span><br><span class="line">Flags:</span><br><span class="line">  -b, --baseURL <span class="keyword">string</span>             hostname (<span class="keyword">and</span> <span class="keyword">path</span>) <span class="keyword">to</span> the root, <span class="built_in">e</span>.g. http://spf13.com/</span><br><span class="line">  -D, --buildDrafts                <span class="keyword">include</span> content marked <span class="keyword">as</span> draft</span><br><span class="line">  -<span class="built_in">E</span>, --buildExpired               <span class="keyword">include</span> expired content</span><br><span class="line">  -F, --buildFuture                <span class="keyword">include</span> content <span class="keyword">with</span> publishdate <span class="keyword">in</span> the future</span><br><span class="line">      --cacheDir <span class="keyword">string</span>            filesystem <span class="keyword">path</span> <span class="keyword">to</span> cache directory. Defaults: $TMPDIR/hugo_cache/</span><br><span class="line">      --cleanDestinationDir        remove files <span class="keyword">from</span> destination <span class="keyword">not</span> found <span class="keyword">in</span> static directories</span><br><span class="line">      --config <span class="keyword">string</span>              config file (default <span class="keyword">is</span> <span class="keyword">path</span>/config.yaml|json|toml)</span><br><span class="line">      --configDir <span class="keyword">string</span>           config dir (default <span class="string">&quot;config&quot;</span>)</span><br><span class="line">  -c, --contentDir <span class="keyword">string</span>          filesystem <span class="keyword">path</span> <span class="keyword">to</span> content directory</span><br><span class="line">      --debug                      debug output</span><br><span class="line">  -d, --destination <span class="keyword">string</span>         filesystem <span class="keyword">path</span> <span class="keyword">to</span> write files <span class="keyword">to</span></span><br><span class="line">      --disableKinds strings       disable different kind of pages (home, RSS etc.)</span><br><span class="line">      --enableGitInfo              add Git revision, date <span class="keyword">and</span> author info <span class="keyword">to</span> the pages</span><br><span class="line">  -<span class="built_in">e</span>, --environment <span class="keyword">string</span>         <span class="keyword">build</span> environment</span><br><span class="line">      --forceSyncStatic            copy <span class="keyword">all</span> files <span class="keyword">when</span> static <span class="keyword">is</span> changed.</span><br><span class="line">      --gc                         enable <span class="keyword">to</span> run <span class="keyword">some</span> cleanup tasks (remove unused cache files) after the <span class="keyword">build</span></span><br><span class="line">  -h, --help                       help <span class="keyword">for</span> hugo</span><br><span class="line">      --i18n-warnings              print <span class="literal">missing</span> translations</span><br><span class="line">      --ignoreCache                ignores the cache directory</span><br><span class="line">      --ignoreVendor               ignores <span class="keyword">any</span> _vendor directory</span><br><span class="line">      --ignoreVendorPaths <span class="keyword">string</span>   ignores <span class="keyword">any</span> _vendor <span class="keyword">for</span> module paths matching the given Glob pattern</span><br><span class="line">  -l, --layoutDir <span class="keyword">string</span>           filesystem <span class="keyword">path</span> <span class="keyword">to</span> layout directory</span><br><span class="line">      --<span class="built_in">log</span>                        enable Logging</span><br><span class="line">      --logFile <span class="keyword">string</span>             <span class="built_in">log</span> File <span class="keyword">path</span> (<span class="keyword">if</span> <span class="keyword">set</span>, logging enabled automatically)</span><br><span class="line">      --minify                     minify <span class="keyword">any</span> supported output format (HTML, XML etc.)</span><br><span class="line">      --noChmod                    don<span class="string">&#x27;t sync permission mode of files</span></span><br><span class="line"><span class="string">      --noTimes                    don&#x27;</span>t sync modification time of files</span><br><span class="line">      --<span class="keyword">path</span>-warnings              print warnings <span class="keyword">on</span> duplicate target paths etc.</span><br><span class="line">      --poll <span class="keyword">string</span>                <span class="keyword">set</span> this <span class="keyword">to</span> a poll interval, <span class="built_in">e</span>.g --poll <span class="number">700</span>ms, <span class="keyword">to</span> <span class="keyword">use</span> a poll based approach <span class="keyword">to</span> watch <span class="keyword">for</span> file <span class="keyword">system</span> changes</span><br><span class="line">      --print-mem                  print memory usage <span class="keyword">to</span> screen at intervals</span><br><span class="line">      --quiet                      <span class="keyword">build</span> <span class="keyword">in</span> quiet mode</span><br><span class="line">      --renderToMemory             render <span class="keyword">to</span> memory (only useful <span class="keyword">for</span> benchmark testing)</span><br><span class="line">  -s, --source <span class="keyword">string</span>              filesystem <span class="keyword">path</span> <span class="keyword">to</span> read files relative <span class="keyword">from</span></span><br><span class="line">      --templateMetrics            display metrics about template executions</span><br><span class="line">      --templateMetricsHints       calculate <span class="keyword">some</span> improvement hints <span class="keyword">when</span> combined <span class="keyword">with</span> --templateMetrics</span><br><span class="line">  -t, --theme strings              themes <span class="keyword">to</span> <span class="keyword">use</span> (located <span class="keyword">in</span> /themes/THEMENAME/)</span><br><span class="line">      --themesDir <span class="keyword">string</span>           filesystem <span class="keyword">path</span> <span class="keyword">to</span> themes directory</span><br><span class="line">      --trace file                 write trace <span class="keyword">to</span> file (<span class="keyword">not</span> useful <span class="keyword">in</span> general)</span><br><span class="line">  -v, --verbose                    verbose output</span><br><span class="line">      --verboseLog                 verbose logging</span><br><span class="line">  -w, --watch                      watch filesystem <span class="keyword">for</span> changes <span class="keyword">and</span> recreate <span class="keyword">as</span> needed</span><br><span class="line"></span><br><span class="line">Additional help topics:</span><br><span class="line">  hugo check   <span class="built_in">Contains</span> <span class="keyword">some</span> verification checks</span><br><span class="line"></span><br><span class="line"><span class="keyword">Use</span> <span class="string">&quot;hugo [command] --help&quot;</span> <span class="keyword">for</span> more information about a command.</span><br></pre></td></tr></table></figure>
+<p>这里我们只需要使用几个命令就可以了:</p>
+<p>建立博客，名为test</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo new site <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Congratulations! Your <span class="keyword">new</span> Hugo site is created <span class="keyword">in</span> C:\git\hugo_blog\test.</span><br><span class="line"></span><br><span class="line">Just a few more steps <span class="keyword">and</span> you&#x27;re ready <span class="keyword">to</span> go:</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> Download a theme into the same-named folder.</span><br><span class="line">   Choose a theme from https:<span class="comment">//themes.gohugo.io/ or</span></span><br><span class="line">   create your own <span class="keyword">with</span> the <span class="string">&quot;hugo new theme &lt;THEMENAME&gt;&quot;</span> command.</span><br><span class="line"><span class="number">2.</span> Perhaps you want <span class="keyword">to</span> add some content. You can add single files</span><br><span class="line">   <span class="keyword">with</span> <span class="string">&quot;hugo new &lt;SECTIONNAME&gt;\&lt;FILENAME&gt;.&lt;FORMAT&gt;&quot;</span>.</span><br><span class="line"><span class="number">3.</span> Start the built-<span class="keyword">in</span> live server via <span class="string">&quot;hugo server&quot;</span>.</span><br><span class="line"></span><br><span class="line">Visit https:<span class="comment">//gohugo.io/ for quickstart guide and full documentation.</span></span><br></pre></td></tr></table></figure>
+<p>这样就生成了一个博客，相关的文件都在test文件夹内</p>
+<p>进入博客文件夹内</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>test文件夹内会有一个config.toml的文件,这个文件是hugo的配置文件</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">baseURL</span> = <span class="string">&quot;http://example.org/&quot;</span> <span class="attr">languageCode</span> = <span class="string">&quot;en-us&quot;</span><span class="attr">title</span> = <span class="string">&quot;My New Hugo Site&quot;</span></span><br></pre></td></tr></table></figure>
+<p>baseURL是博客的网址，生成的博客资源都是基于这个网址进行获取的</p>
+<p>title是网站的标题，就像这个</p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/image-20210808110424578.png" alt="title"></p>
+<p>现在可以使用以下命令运行以下hugo博客的预览</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo <span class="keyword">server</span></span><br></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">Start building sites …</span><br><span class="line">hugo v0.86.1-F6821B88 windows/amd64 BuildDate=2021-07-30T10:13:35Z VendorInfo=gohugoio</span><br><span class="line">WARN 2021/08/08 11:08:08 found no layout file <span class="keyword">for</span> <span class="string">&quot;HTML&quot;</span> <span class="keyword">for</span> kind <span class="string">&quot;taxonomy&quot;</span>: You should create a template file <span class="built_in">which</span> matches Hugo Layouts Lookup Rules <span class="keyword">for</span> this combination.</span><br><span class="line">WARN 2021/08/08 11:08:08 found no layout file <span class="keyword">for</span> <span class="string">&quot;HTML&quot;</span> <span class="keyword">for</span> kind <span class="string">&quot;taxonomy&quot;</span>: You should create a template file <span class="built_in">which</span> matches Hugo Layouts Lookup Rules <span class="keyword">for</span> this combination.</span><br><span class="line">WARN 2021/08/08 11:08:08 found no layout file <span class="keyword">for</span> <span class="string">&quot;HTML&quot;</span> <span class="keyword">for</span> kind <span class="string">&quot;home&quot;</span>: You should create a template file <span class="built_in">which</span> matches Hugo Layouts Lookup Rules <span class="keyword">for</span> this combination.</span><br><span class="line"></span><br><span class="line">                   | EN</span><br><span class="line">-------------------+-----</span><br><span class="line">  Pages            |  3</span><br><span class="line">  Paginator pages  |  0</span><br><span class="line">  Non-page files   |  0</span><br><span class="line">  Static files     |  0</span><br><span class="line">  Processed images |  0</span><br><span class="line">  Aliases          |  0</span><br><span class="line">  Sitemaps         |  1</span><br><span class="line">  Cleaned          |  0</span><br><span class="line"></span><br><span class="line">Built <span class="keyword">in</span> 37 ms</span><br><span class="line">Watching <span class="keyword">for</span> changes <span class="keyword">in</span> C:\git\hugo_blog\<span class="built_in">test</span>\&#123;archetypes,content,data,layouts,static&#125;</span><br><span class="line">Watching <span class="keyword">for</span> config changes <span class="keyword">in</span> C:\git\hugo_blog\<span class="built_in">test</span>\config.toml</span><br><span class="line">Environment: <span class="string">&quot;development&quot;</span></span><br><span class="line">Serving pages from memory</span><br><span class="line">Running <span class="keyword">in</span> Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender</span><br><span class="line">Web Server is available at http://localhost:1313/ (<span class="built_in">bind</span> address 127.0.0.1)</span><br><span class="line">Press Ctrl+C to stop</span><br></pre></td></tr></table></figure>
+<p>倒数第二行显示了博客的地址<strong>localhost:1313</strong>,若1313地址被使用，则会随机使用一个端口</p>
+<p>但是现在的博客还什么都没有，打开就是一片空白</p>
+<p>所以现在需要加入主题设计</p>
+<h3 id="3、加入主题并运行博客">3、加入主题并运行博客</h3>
+<p>在网上查询之后，发现HUGO官方搭建的<a target="_blank" rel="noopener" href="https://themes.gohugo.io/">theme主题站</a>,大量的开源主题可供选择。</p>
+<p>基本上所有的主题都自带安装的方法</p>
+<p>这里我选择了一个主题进行调试https://themes.gohugo.io/themes/blist-hugo-theme/</p>
+<p><img src="https://d33wubrfki0l68.cloudfront.net/1464c5de1913bdbf7a164d012e5a97420c3a5ffb/4ac93/themes/blist-hugo-theme/screenshot_hua53ae996935694d88553aaa22d4e6a1a_892723_1500x1000_fill_catmullrom_top_2.png" alt="Blist"></p>
+<p>在网页下方的说明内，找到主题安装的方法</p>
+<p>或者，直接去主题的github网址，里面的readme.md中有说明主题的下载和使用方式，两个方法都是一样的</p>
+<p>于是，根据主题作者提供的命令/</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/apvarun/blist-hugo-theme.git themes/blist	<span class="comment">##获得主题</span></span><br></pre></td></tr></table></figure>
+<p>下载完成后，将 package.json 文件从 themes/showcase 文件夹复制到你的 Hugo 网站根文件夹，然后运行 npm install</p>
+<p>进入themes/blist/exampleSite文件夹中，复制exampleSite中的文件，替换掉Hugo网站根文件夹中的相同命名的文件</p>
+<p>执行命令</p>
+<figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">hugo serve</span></span><br></pre></td></tr></table></figure>
+<p>这个时候有可能会因为一些twitter或者facebook的api无法访问而导致的问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Start building sites …</span><br><span class="line">hugo v0.86.1-F6821B88 windows/amd64 BuildDate=2021-07-30T10:13:35Z VendorInfo=gohugoio</span><br><span class="line">ERROR 2021/08/08 15:05:14 Failed to get JSON resource <span class="string">&quot;https://api.twitter.com/1/statuses/oembed.json?id=1085870671291310081&amp;omit_script=true&quot;</span>: Get <span class="string">&quot;https://api.twitter.com/1/statuses/oembed.json?id=1085870671291310081&amp;omit_script=true&quot;</span>: dial tcp 162.125.2.6:443: connectex: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.</span><br><span class="line">If you feel that this should not be logged as an ERROR, you can ignore it by adding this to your site config:</span><br><span class="line">ignoreErrors = [<span class="string">&quot;error-remote-getjson&quot;</span>]</span><br><span class="line">Error: Error building site: <span class="string">&quot;C:\git\hugo_blog\test\content\blog\rich-content.md:1:1&quot;</span>: timed out initializing value. You may have a circular loop <span class="keyword">in</span> a shortcode, or your site may have resources that take longer to build than the `timeout` <span class="built_in">limit</span> <span class="keyword">in</span> your Hugo config file.</span><br><span class="line">Built <span class="keyword">in</span> 37375 ms</span><br></pre></td></tr></table></figure>
+<p>这个时候就去寻找报错中使用这些资源的文件</p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/image-20210808150819394.png" alt="外网api"></p>
+<p>直接去掉就好了，反正国内也用不到这些</p>
+<p>在执行一次命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo serve</span><br></pre></td></tr></table></figure>
+<p>成功运行博客！！！</p>
+<h3 id="4、将博客部署到github上">4、将博客部署到github上</h3>
+<p>这部分需要使用到一个叫做<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/GitHub_Pages">github page</a>的东西，是GitHub提供的一个网页寄存服务，可以寄存静态页面，这个特性就特别适合博客的搭建。</p>
+<p>首先再Github上创建一个 Repository，<a target="_blank" rel="noopener" href="http://xn--Github-vy7ir11bha52is81c.github.io">命名为Github名字.github.io</a>，譬如我的仓库<a target="_blank" rel="noopener" href="https://caecarxu.github.io/">caecarxu.github.io</a>，这样就可以生成一个用户页面</p>
+<p>在hugo server调式页面完成后，使用命令hugo生成hugo静态页面。</p>
+<p><strong>注意！！！</strong></p>
+<p>在生成静态页面之前要把config.toml文件中的baseURL修改为自己博客的网址，譬如</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baseURL = <span class="string">&quot;https://caecarxu.github.io/&quot;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hugo	<span class="comment">##生成静态页面文件</span></span><br></pre></td></tr></table></figure>
+<p>在命令执行后，出现一个public文件夹，里面就是网站的静态页面文件</p>
+<p>进入public文件夹，使用git上传文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> public</span><br><span class="line">git init	<span class="comment">##初始化仓库</span></span><br><span class="line">git remote add origin https://github.com/caecarxu/caecarxu.github.io.git	<span class="comment">##链接远程仓库</span></span><br><span class="line">git add .</span><br><span class="line">git commit -m <span class="string">&quot;first commit&quot;</span></span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<p>在此之后更新文章，使用hugo生成新的静态页面，并使用git push进行同步</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> public</span><br><span class="line">git add .</span><br><span class="line">git status</span><br><span class="line">git commit -m <span class="string">&quot;add blog post&quot;</span></span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>提示以下，commit -m 后面的东西是此次提交的备注，通常用来说明提交人的名字</p>
+
+
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
+          
+          <li class="previous">
+            <a href="/cn/消失的社群/" data-toggle="tooltip" data-placement="top" title="消失的社群">&larr; Previous Post</a>
+          </li>
+          
+          
+          <li class="next">
+            <a href="/cn/记一次Springboot+mybaits配置经历/" data-toggle="tooltip" data-placement="top" title="记一次Springboot+mybaits配置经历">Next Post &rarr;</a>
+          </li>
+          
+        </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      若图片或文字侵犯了您的版权，请与作者联系以将其删除，谢谢。
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=使用hugo生成静态博客并部署在GitHub上&body=Hi,I found this website and thought you might like it http://yoursite-url/cn/hugo生成静态博客教程/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
+      </div>
+
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
+
+    
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">简介</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1%E3%80%81%E5%AE%89%E8%A3%85hugo"><span class="toc-nav-number">1.0.1.</span> <span class="toc-nav-text">1、安装hugo</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2%E3%80%81%E4%BD%BF%E7%94%A8hugo"><span class="toc-nav-number">1.0.2.</span> <span class="toc-nav-text">2、使用hugo</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3%E3%80%81%E5%8A%A0%E5%85%A5%E4%B8%BB%E9%A2%98%E5%B9%B6%E8%BF%90%E8%A1%8C%E5%8D%9A%E5%AE%A2"><span class="toc-nav-number">1.0.3.</span> <span class="toc-nav-text">3、加入主题并运行博客</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4%E3%80%81%E5%B0%86%E5%8D%9A%E5%AE%A2%E9%83%A8%E7%BD%B2%E5%88%B0github%E4%B8%8A"><span class="toc-nav-number">1.0.4.</span> <span class="toc-nav-text">4、将博客部署到github上</span></a></li></ol></li></ol></li></ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+        <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#hugo" title="hugo">hugo</a>
+            
+            <a class="tag" href="/tags/#go" title="go">go</a>
+            
+            <a class="tag" href="/tags/#blog" title="blog">blog</a>
+            
+          </div>
+        </section>
+        
+
+        <!-- Friends Blog -->
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+
+
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
+
+<!-- anchorjs end -->
+
+
+
+		<!-- Footer (contains ThemeColor、viewer) -->
+		<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center">
+          
+
+          
+            <li>
+              <a target="_blank" href="https://github.com/caecarxu">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+            <li>
+              <a target="_blank" href="https://www.zhihu.com/people/ceacer-37">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa  fa-stack-1x fa-inverse">知</i>
+                </span>
+              </a>
+            </li>
+          
+
+          
+            <li>
+              <a target="_blank" href="http://weibo.com/7612955402">
+                <span class="fa-stack fa-lg">
+                  <i class="fa fa-circle fa-stack-2x"></i>
+                  <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          
+
+        </ul>
+        <p class="copyright text-muted">
+          Copyright &copy;
+          Ceacar
+          2021
+          <br>
+          Theme by
+          <a target="_blank" rel="noopener" href="http://beantech.org">BeanTech</a>
+          <span style="display: inline-block; margin: 0 5px;">
+            <i class="fa fa-heart"></i>
+          </span>
+          re-Ported by
+          <a target="_blank" rel="noopener" href="https://v-vincen.life/">Live My Life</a>
+          |
+          <iframe style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0" width="91px" height="20px" src="https://ghbtns.com/github-btn.html?user=V-Vincen&repo=V-Vincen.github.io&type=star&count=true"></iframe>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<a id="rocket" href="#top" class=""></a>
+
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <!-- Custom Theme JavaScript -->
+  <script type="text/javascript" src="/js/hux-blog.min.js"></script>
+  <!-- catalog -->
+  <script async="true" type="text/javascript" src="/js/catalog.js"></script>
+  <!-- totop(rocket) -->
+  <script async="true" type="text/javascript" src="/js/totop.js"></script>
+
+  
+    <!-- Busuanzi JavaScript -->
+    <script async="async" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  
+
+  
+    <!-- Scroll start -->
+    <script async="async" type="text/javascript" src="/js/scroll.js"></script>
+    <!-- Scroll end -->
+  
+
+  
+    <!-- LangSelect start -->
+    <script type="text/javascript" src="/js/langselect.js"></script>
+    <!-- LangSelect end -->
+  
+
+  
+    <!-- Mouseclick -->
+    <script type="text/javascript" src="/js/mouseclick.js" content='' color=''></script>
+  
+
+  
+
+  
+
+
+
+
+
+
+
+<script>
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function (e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  }
+
+  // fastClick.js
+  async ("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function () {
+    var $nav = document.querySelector("nav");
+    if ($nav)
+      FastClick.attach($nav);
+    }
+  )
+</script>
+
+<!-- Because of the native support for backtick-style fenced code blocks right within the Markdown is landed in Github Pages, From V1.6, There is no need for Highlight.js, so Huxblog drops it officially. -
+https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0 - https://help.github.com/articles/creating-and-highlighting-code-blocks/ -->
+<!-- <script> async ("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function () { hljs.initHighlightingOnLoad(); }) </script> <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet"> -->
+
+<!-- jquery.tagcloud.js -->
+<!-- <script> // only load tagcloud.js in tag.html if ($('#tag_cloud').length !== 0) { async ("http://yoursite-url/js/jquery.tagcloud.js", function () { $.fn.tagcloud.defaults = { // size: { start: 1, end: 1, unit: 'em' }, color: {
+start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </script> -->
+
+
+		<!-- Search -->
+		
+		<div class="popup search-popup local-search-popup">
+  <span class="popup-btn-close">
+    ESC
+  </span>
+  <div class="container">
+    <div class="row">
+      <!-- <div class="col-md-9 col-md-offset-1"> -->
+      <div class="col-lg-9 col-lg-offset-1 col-md-10 col-md-offset-1 local-search-content">
+
+        <div class="local-search-header clearfix">
+
+          <div class="local-search-input-wrapper">
+            <span class="search-icon">
+              <i class="fa fa-search fa-lg" style="margin: 25px 10px 25px 20px;"></i>
+            </span>
+            <input autocomplete="off" placeholder="搜索..." type="text" id="local-search-input">
+          </div>
+        </div>
+        <div id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+    <script src="/js/ziploader.js"></script>
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.json";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    // monitor main search box;
+    var onPopupClose = function (e) {
+      $('.popup').fadeOut(300);
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $('.popup').fadeIn(300);
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+    // get search zip version
+    $.get('/searchVersion.json?t=' + (+new Date()), function (res) {
+      if (localStorage.getItem('searchVersion') !== res) {
+        localStorage.setItem('searchVersion', res);
+        initSearchJson();
+      }
+    });
+
+    function initSearchJson() {
+      initLoad(['/search.flv'], {
+        loadOptions: {
+          success: function (obj) {
+            localStorage.setItem('searchJson', obj['search.json'])
+          },
+          error: function (e) {
+            return console.log(e)
+          }
+        },
+        returnOptions: {
+          'json': TYPE_TEXT
+        },
+        mimeOptions: {
+          'json': 'application/json'
+        }
+      })
+    }
+    // search function;
+    var searchFunc = function (search_id, content_id) {
+      'use strict';
+      isfetched = true;
+      var datas = JSON.parse(localStorage.getItem('searchJson'));
+      // console.log(search_id)
+      var input = document.getElementById(search_id);
+      var resultContent = document.getElementById(content_id);
+      var inputEventFunction = function () {
+        var searchText = input.value.trim().toLowerCase();
+        var keywords = searchText.split(/[\s\-]+/);
+        if (keywords.length > 1) {
+          keywords.push(searchText);
+        }
+        var resultItems = [];
+        if (searchText.length > 0) {
+          // perform local searching
+          datas.forEach(function (data) {
+            var isMatch = false;
+            var hitCount = 0;
+            var searchTextCount = 0;
+            var title = data.title
+              ? data.title.trim()
+              : '';
+            var titleInLowerCase = title.toLowerCase();
+            var content = data.content
+              ? data.content.trim().replace(/<[^>]+>/g, "")
+              : '';
+            var contentInLowerCase = content.toLowerCase();
+            var articleUrl = decodeURIComponent(data.url);
+
+            var date = data.date;
+            var dateTime = date.replace(/T/, " ").replace(/.000Z/, "");
+            var imgUrl = data.header_img;
+            
+
+
+            var indexOfTitle = [];
+            var indexOfContent = [];
+            // only match articles with not empty titles
+            keywords.forEach(function (keyword) {
+              function getIndexByWord(word, text, caseSensitive) {
+                var wordLen = word.length;
+                if (wordLen === 0) {
+                  return [];
+                }
+                var startPosition = 0,
+                  position = [],
+                  index = [];
+                if (!caseSensitive) {
+                  text = text.toLowerCase();
+                  word = word.toLowerCase();
+                }
+                while ((position = text.indexOf(word, startPosition)) > -1) {
+                  index.push({position: position, word: word});
+                  startPosition = position + wordLen;
+                }
+                return index;
+              }
+              indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+              indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+            });
+            if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+              isMatch = true;
+              hitCount = indexOfTitle.length + indexOfContent.length;
+            }
+            // show search results
+            if (isMatch) {
+              // sort index by position of keyword
+              [indexOfTitle, indexOfContent].forEach(function (index) {
+                index.sort(function (itemLeft, itemRight) {
+                  if (itemRight.position !== itemLeft.position) {
+                    return itemRight.position - itemLeft.position;
+                  } else {
+                    return itemLeft.word.length - itemRight.word.length;
+                  }
+                });
+              });
+              // merge hits into slices
+              function mergeIntoSlice(text, start, end, index) {
+                var item = index[index.length - 1];
+                var position = item.position;
+                var word = item.word;
+                var hits = [];
+                var searchTextCountInSlice = 0;
+                while (position + word.length <= end && index.length != 0) {
+                  if (word === searchText) {
+                    searchTextCountInSlice++;
+                  }
+                  hits.push({position: position, length: word.length});
+                  var wordEnd = position + word.length;
+                  // move to next position of hit
+                  index.pop();
+                  while (index.length != 0) {
+                    item = index[index.length - 1];
+                    position = item.position;
+                    word = item.word;
+                    if (wordEnd > position) {
+                      index.pop();
+                    } else {
+                      break;
+                    }
+                  }
+                }
+                searchTextCount += searchTextCountInSlice;
+                return {hits: hits, start: start, end: end, searchTextCount: searchTextCountInSlice};
+              }
+              var slicesOfTitle = [];
+              if (indexOfTitle.length != 0) {
+                slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+              }
+              var slicesOfContent = [];
+              while (indexOfContent.length != 0) {
+                var item = indexOfContent[indexOfContent.length - 1];
+                var position = item.position;
+                var word = item.word;
+                // cut out 100 characters
+                var start = position - 20;
+                var end = position + 80;
+                if (start < 0) {
+                  start = 0;
+                }
+                if (end < position + word.length) {
+                  end = position + word.length;
+                }
+                if (end > content.length) {
+                  end = content.length;
+                }
+                slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+              }
+              // sort slices in content by search text's count and hits' count
+              slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                  return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                  return sliceRight.hits.length - sliceLeft.hits.length;
+                } else {
+                  return sliceLeft.start - sliceRight.start;
+                }
+              });
+              // select top N slices in content
+              var upperBound = parseInt('1');
+              if (upperBound >= 0) {
+                slicesOfContent = slicesOfContent.slice(0, upperBound);
+              }
+              // highlight title and content
+              function highlightKeyword(text, slice) {
+                var result = '';
+                var prevEnd = slice.start;
+                slice.hits.forEach(function (hit) {
+                  result += text.substring(prevEnd, hit.position);
+                  var end = hit.position + hit.length;
+                  result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                  prevEnd = end;
+                });
+                result += text.substring(prevEnd, slice.end);
+                return result;
+              }
+              var resultItem = '';
+
+              // if (slicesOfTitle.length != 0) {   resultItem += "<li><a target='_blank' href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>"; } else {   resultItem += "<li><a target='_blank' href='" +
+              // articleUrl + "' class='search-result-title'>" + title + "</a>"; } slicesOfContent.forEach(function (slice) {   resultItem += "<a target='_blank' href='" + articleUrl + "'><p class=\"search-result\">" + highlightKeyword(content, slice) +
+              // "...</p></a>"; }); resultItem += "</li>";
+
+              if (slicesOfTitle.length != 0) {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              } else {
+                resultItem += "<a target='_blank' href='" + articleUrl + "' class='search-result'><div class='search-result-left'><div class='search-result-title'>" + title + "</div><time class='search-result-date'>" + dateTime + "</time>";
+              }
+              slicesOfContent.forEach(function (slice) {
+                resultItem += "<p class=\"search-result-content\">" + highlightKeyword(content, slice) + "...</p>";
+              });
+              resultItem += "</div><div class='search-result-right'><img class='media-image' src='" + imgUrl + "' width='64px' height='48px'></img></div></a>";
+
+              resultItems.push({item: resultItem, searchTextCount: searchTextCount, hitCount: hitCount, id: resultItems.length});
+            }
+          })
+        };
+
+        if (keywords.length === 1 && keywords[0] === "") {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else if (resultItems.length === 0) {
+          resultContent.innerHTML = '<div id="no-result"></div>'
+        } else {
+          resultItems.sort(function (resultLeft, resultRight) {
+            if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+              return resultRight.searchTextCount - resultLeft.searchTextCount;
+            } else if (resultLeft.hitCount !== resultRight.hitCount) {
+              return resultRight.hitCount - resultLeft.hitCount;
+            } else {
+              return resultRight.id - resultLeft.id;
+            }
+          });
+          var searchResultList = '<div class=\"search-result-list\">';
+          resultItems.forEach(function (result) {
+            searchResultList += result.item;
+          })
+          searchResultList += "</div>";
+          resultContent.innerHTML = searchResultList;
+        }
+      }
+      if ('auto' === 'auto') {
+        input.addEventListener('input', inputEventFunction);
+      } else {
+        $('.search-icon').click(inputEventFunction);
+        input.addEventListener('keypress', function (event) {
+          if (event.keyCode === 13) {
+            inputEventFunction();
+          }
+        });
+      }
+      // remove loading animation
+      $('body').css('overflow', '');
+      proceedsearch();
+    }
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function (e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc('local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function (e) {
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 && $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+
+    document.addEventListener('mouseup', (e) => {
+      var _con = document.querySelector(".local-search-content");
+      if (_con) {
+        if (!_con.contains(e.target)) {
+          onPopupClose();
+        }
+      }
+    });
+  </script>
+
+
+		
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

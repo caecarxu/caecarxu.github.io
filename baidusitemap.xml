@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite-url/cn/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2020-04-16</lastmod>
+    <loc>http://yoursite-url/cn/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <lastmod>2021-09-30</lastmod>
   </url>
   <url>
-    <loc>http://yoursite-url/en/Hexo-Theme-LiveMyLife/</loc>
-    <lastmod>2020-04-16</lastmod>
+    <loc>http://yoursite-url/cn/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A4%BE%E7%BE%A4/</loc>
+    <lastmod>2021-08-15</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</loc>
+    <lastmod>2021-08-07</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/%E8%AE%B0%E4%B8%80%E6%AC%A1Springboot+mybaits%E9%85%8D%E7%BD%AE%E7%BB%8F%E5%8E%86/</loc>
+    <lastmod>2021-08-03</lastmod>
+  </url>
+  <url>
+    <loc>http://yoursite-url/cn/java%E6%B3%9B%E5%9E%8B/</loc>
+    <lastmod>2021-07-31</lastmod>
   </url>
 </urlset> 
