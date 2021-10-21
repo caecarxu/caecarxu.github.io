@@ -130,10 +130,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://caecarxu.github.io/categories/blog/">
+  <link rel="canonical" href="https://caecarxu.github.io/cn/ArrayDeque/">
   <title>
     
-      Mockingjay
+      ArrayDeque源码学习总结 - Mockingjay
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -291,25 +291,7 @@
           <!-- LangSelect -->
           
           
-          <!-- LangSelect start -->
-          <!-- LangSelect -->
-<li>
-  <a id="lang-select-label"><i class="fa fa-globe"></i>
-    <span>
-      简体中文
-    </span>
-    <select id="lang-select" data-canonical="categories/blog/index.html">
-      
-      
-      <option value="cn"  selected >
-        简体中文
-      </option>
-      
-    </select>
-  </a>
-</li>
-
-          <!-- LangSelect end -->
+          
           
           
         </ul>
@@ -361,19 +343,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/bg2.jpg');
-      --intro-header-background-image-url-post: url('');
-      --intro-header-background-image-url-page: url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1145-cleaned.jpg');
+      --intro-header-background-image-url-page: url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1145-cleaned.jpg');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/bg2.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/archive_bg2.jpg');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1145-cleaned.jpg');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1145-cleaned.jpg');
     }
 
     header.intro-header {
-       /*page*/
-        background-image: var(--intro-header-background-image-url-page);
-        /* background-image: url('/img/header_img/archive_bg2.jpg'); */
+       /*post*/
+        background-image: var(--intro-header-background-image-url-post);
+        /* background-image: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1145-cleaned.jpg'); */
       
     }
 
@@ -391,10 +373,24 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
           
-          <div class="site-heading">
-            <h1>海&#39;s Blog</h1>
-            <!--<hr class="small">-->
-            <span class="subheading">所见非所得，所写即所得</span>
+          <div class="post-heading">
+            <div class="tags">
+              
+              <a class="tag" href="/tags/#java" title="java">java</a>
+              
+            </div>
+            <h1>ArrayDeque源码学习总结</h1>
+            <h2 class="subheading">对ArrayList源码的学习和总结...</h2>
+            <span class="meta">
+              Posted by Ceacar on
+              2021-10-17
+            </span>
+
+
+            
+            
+
+
           </div>
           
         </div>
@@ -435,331 +431,216 @@
 	Friends Blog、
 	anchorjs、
 	) -->
-		<!-- Main Content -->
-<div class="container">
-  <div class="row">
-    
+		<!-- Modify by Yu-Hsuan Yen -->
+<!-- Post Content -->
+<article>
+  <div class="container">
+    <div class="row">
+      <!-- Post Container -->
+      <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-    <!-- USE SIDEBAR -->
-    <!-- Post Container -->
-    <div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                post-container
-            ">
+        <blockquote>
+<p>源码来自与OpenJDK 17</p>
+<p>我选择个人认为重要的点进行总结</p>
+</blockquote>
+<p>ArrayDeque继承了AbstractCollection<E>抽象类，实现了Deque<E>, Cloneable, Serializable接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayDeque</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractCollection</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">                           <span class="keyword">implements</span> <span class="title">Deque</span>&lt;<span class="title">E</span>&gt;, <span class="title">Cloneable</span>, <span class="title">Serializable</span></span></span><br></pre></td></tr></table></figure>
+<p>ArrayDeque底层使用数组进行队列的存储。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">transient</span> Object[] elements;</span><br></pre></td></tr></table></figure>
+<p>ArrayDeque，提供public boolean add(E e) 函数进行对象的添加。</p>
+<p>在添加时，遇到队列满的情况时，使用grow(int needed)函数进行数组的扩大。</p>
+<p>若内存容量足够，则扩展的容量为原容量（oldCapacity）的一半，若不充足则扩充至所需最小容量。</p>
+<p>扩容时，调用public static native void arraycopy(Object src,  int  srcPos,Object dest, int destPos,int length)函数进行扩容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">       addLast(e);</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addLast</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> (e == <span class="keyword">null</span>)</span><br><span class="line">           <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException();</span><br><span class="line">       <span class="keyword">final</span> Object[] es = elements;</span><br><span class="line">       es[tail] = e;</span><br><span class="line">       <span class="keyword">if</span> (head == (tail = inc(tail, es.length)))</span><br><span class="line">           grow(<span class="number">1</span>);		<span class="comment">//队列满</span></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> needed)</span> </span>&#123;</span><br><span class="line">       <span class="comment">// overflow-conscious code</span></span><br><span class="line">       <span class="keyword">final</span> <span class="keyword">int</span> oldCapacity = elements.length;</span><br><span class="line">       <span class="keyword">int</span> newCapacity;</span><br><span class="line">       <span class="comment">// Double capacity if small; else grow by 50%</span></span><br><span class="line">       <span class="keyword">int</span> jump = (oldCapacity &lt; <span class="number">64</span>) ? (oldCapacity + <span class="number">2</span>) : (oldCapacity &gt;&gt; <span class="number">1</span>);</span><br><span class="line">       <span class="keyword">if</span> (jump &lt; needed</span><br><span class="line">           || (newCapacity = (oldCapacity + jump)) - MAX_ARRAY_SIZE &gt; <span class="number">0</span>)</span><br><span class="line">           newCapacity = newCapacity(needed, jump);</span><br><span class="line">       <span class="keyword">final</span> Object[] es = elements = Arrays.copyOf(elements, newCapacity);</span><br><span class="line">       <span class="comment">// Exceptionally, here tail == head needs to be disambiguated</span></span><br><span class="line">       <span class="keyword">if</span> (tail &lt; head || (tail == head &amp;&amp; es[head] != <span class="keyword">null</span>)) &#123;</span><br><span class="line">           <span class="comment">// wrap around; slide first leg forward to end of array</span></span><br><span class="line">           <span class="keyword">int</span> newSpace = newCapacity - oldCapacity;</span><br><span class="line">           System.arraycopy(es, head,</span><br><span class="line">                            es, head + newSpace,</span><br><span class="line">                            oldCapacity - head);</span><br><span class="line">           <span class="keyword">for</span> (<span class="keyword">int</span> i = head, to = (head += newSpace); i &lt; to; i++)</span><br><span class="line">               es[i] = <span class="keyword">null</span>;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p>当ArrayDeque会使用</p>
+<p>inc(int i, int modulus)、</p>
+<p>dec(int i, int modulus)</p>
+<p>inc(int i, int distance, int modulus)</p>
+<p>sub(int i, int j, int modulus)</p>
+<p>来实现head和tail在数组中的循环，从而实现循环队列</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> modulus)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (++i &gt;= modulus) i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">dec</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> modulus)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (--i &lt; <span class="number">0</span>) i = modulus - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">inc</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> distance, <span class="keyword">int</span> modulus)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((i += distance) - modulus &gt;= <span class="number">0</span>) i -= modulus;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> <span class="title">sub</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> modulus)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ((i -= j) &lt; <span class="number">0</span>) i += modulus;</span><br><span class="line">    <span class="keyword">return</span> i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ArrayDeque，使用remove删除特定元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> removeFirstOccurrence(o);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeFirstOccurrence</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">final</span> Object[] es = elements;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = head, end = tail, to = (i &lt;= end) ? end : es.length;</span><br><span class="line">             ; i = <span class="number">0</span>, to = end) &#123;</span><br><span class="line">            <span class="keyword">for</span> (; i &lt; to; i++)</span><br><span class="line">                <span class="keyword">if</span> (o.equals(es[i])) &#123;</span><br><span class="line">                    delete(i);</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            <span class="keyword">if</span> (to == end) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>ArrayDeque使用delete删除index下的元素</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Object[] es = elements;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> capacity = es.length;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> h, t;</span><br><span class="line">    <span class="comment">// number of elements before to-be-deleted elt</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> front = sub(i, h = head, capacity);</span><br><span class="line">    <span class="comment">// number of elements after to-be-deleted elt</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> back = sub(t = tail, i, capacity) - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (front &lt; back) &#123;</span><br><span class="line">        <span class="comment">// move front elements forwards</span></span><br><span class="line">        <span class="keyword">if</span> (h &lt;= i) &#123;</span><br><span class="line">            System.arraycopy(es, h, es, h + <span class="number">1</span>, front);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// Wrap around</span></span><br><span class="line">            System.arraycopy(es, <span class="number">0</span>, es, <span class="number">1</span>, i);</span><br><span class="line">            es[<span class="number">0</span>] = es[capacity - <span class="number">1</span>];</span><br><span class="line">            System.arraycopy(es, h, es, h + <span class="number">1</span>, front - (i + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        es[h] = <span class="keyword">null</span>;</span><br><span class="line">        head = inc(h, capacity);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// move back elements backwards</span></span><br><span class="line">        tail = dec(t, capacity);</span><br><span class="line">        <span class="keyword">if</span> (i &lt;= tail) &#123;</span><br><span class="line">            System.arraycopy(es, i + <span class="number">1</span>, es, i, back);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123; <span class="comment">// Wrap around</span></span><br><span class="line">            System.arraycopy(es, i + <span class="number">1</span>, es, i, capacity - (i + <span class="number">1</span>));</span><br><span class="line">            es[capacity - <span class="number">1</span>] = es[<span class="number">0</span>];</span><br><span class="line">            System.arraycopy(es, <span class="number">1</span>, es, <span class="number">0</span>, t - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        es[tail] = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <!-- Main Content -->
-<div class="container">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-0 col-md-10 col-md-offset-1">
-      <!-- 归档列表 -->
 
-      
-
-      <!-- 归档列表 -->
-      
-      <div class="one-tag-list">
-        <span class="fa fa-calendar-times-o listing-seperator" id="2021">
-          <span class="tag-text">2021</span>
-        </span>
-        <ul>
+        <hr>
+        <!-- Pager -->
+        <ul class="pager">
           
-          <li>
-            10-17
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ArrayDeque/" style="color: #0085a1">
-              <span>
-                ArrayDeque源码学习总结
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
           
-          <li>
-            10-16
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/ArrayList/" style="color: #0085a1">
-              <span>
-                java学习ArrayList总结
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            10-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/java设计模式/" style="color: #0085a1">
-              <span>
-                Java设计模式总结
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-16
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/消失的社群/" style="color: #0085a1">
-              <span>
-                消失的社群
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-08
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/hugo生成静态博客教程/" style="color: #0085a1">
-              <span>
-                使用hugo生成静态博客并部署在GitHub上
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-04
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/记一次Springboot+mybaits配置经历/" style="color: #0085a1">
-              <span>
-                记一次Springboot+mybaits配置经历
-                
-                -- cn
-                
-              </span>
-            </a>
-          </li>
-          
-          <li>
-            08-01
-            <i class="fa fa-angle-double-right" aria-hidden="true"></i>
-            <a href="/cn/java泛型/" style="color: #0085a1">
-              <span>
-                Java泛型
-                
-                -- cn
-                
-              </span>
-            </a>
+          <li class="next">
+            <a href="/cn/ArrayList/" data-toggle="tooltip" data-placement="top" title="java学习ArrayList总结">Next Post &rarr;</a>
           </li>
           
         </ul>
+
+        
+        <!-- tip start -->
+        <!-- tip -->
+<!-- tip start -->
+<div class="tip">
+  <p>
+    
+      若图片或文字侵犯了您的版权，请与作者联系以将其删除，谢谢。
+    
+  </p>
+</div>
+<!-- tip end -->
+
+        <!-- tip end -->
+        
+
+        
+        <!-- Sharing Srtart -->
+        <!-- Social Social Share Post -->
+<!-- Docs:https://github.com/overtrue/share.js -->
+
+<div class="social-share" data-initialized="true" data-disabled="tencent ,douban ,qzone ,linkedin ,facebook ,google ,diandian" data-wechat-qrcode-helper="" align="center">
+  <ul class="list-inline text-center social-share-ul">
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-twitter">
+        <i class="fa fa-twitter fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a class="social-share-icon icon-wechat">
+        <i class="fa fa-weixin fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-weibo">
+        <i class="fa fa-weibo fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon icon-qq">
+        <i class="fa fa-qq fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+    <li class="social-share-li">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=ArrayDeque源码学习总结&body=Hi,I found this website and thought you might like it https://caecarxu.github.io/cn/ArrayDeque/">
+        <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<!-- css & js -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css"> -->
+<script defer="defer" async="true" src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+
+        <!-- Sharing End -->
+        
+        <hr>
+
+        <!-- comments start -->
+        <!-- 1. gitalk comment -->
+
+
+<!-- 2. gitment comment -->
+
+
+<!-- 3. disqus comment -->
+
+
+        <!-- comments end -->
+        <hr>
+
       </div>
-      
-    </div>
-  </div>
-</div>
 
+      <!-- Catalog: Tabe of Content -->
+      <!-- Table of Contents -->
 
-      <!-- 如果开启评论功能 -->
-      
-    </div>
-
-    <!-- Sidebar Container -->
-<div class="
-    col-lg-3 col-lg-offset-0
-    col-md-3 col-md-offset-0
-    col-sm-12
-    col-xs-12
-    sidebar-container
-">
     
+      <aside id="sidebar">
+        <div id="toc" class="toc-article">
+        <strong class="toc-title">目录</strong>
+        
+          <ol class="nav">none</ol>
+        
+        </div>
+      </aside>
+    
+
+
+
+      <!-- Sidebar Container -->
+      <div class="
+                col-lg-8 col-lg-offset-1
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
         <!-- Featured Tags -->
+        
+        <section>
+          <!-- no hr -->
+          <h5>
+            <a href="/tags/">特色标签</a>
+          </h5>
+          <div class="tags">
+            
+            <a class="tag" href="/tags/#java" title="java">java</a>
+            
+          </div>
+        </section>
+        
 
-<section>
-  <h5><a href="/tags/">特色标签</a></h5>
-  <div class="tags">
-    
-    
-    <a href="/tags/#随想" title="随想" rel="1">随想</a>
-    
-    
-    
-    <a href="/tags/#java" title="java" rel="5">java</a>
-    
-    
-    
-    <a href="/tags/#springboot" title="springboot" rel="1">springboot</a>
-    
-    
-    
-    <a href="/tags/#mybaits" title="mybaits" rel="1">mybaits</a>
-    
-    
-    
-    <a href="/tags/#hugo" title="hugo" rel="1">hugo</a>
-    
-    
-    
-    <a href="/tags/#go" title="go" rel="1">go</a>
-    
-    
-    
-    <a href="/tags/#blog" title="blog" rel="1">blog</a>
-    
-    
+        <!-- Friends Blog -->
+        
+      </div>
+    </div>
   </div>
-</section>
+</article>
 
 
-        <hr>
-    
-        <!-- Short About -->
-<section class="visible-md visible-lg">
-  <h5><a href="/about/">关于自己</a></h5>
-  <div class="short-about">
 
-    
-    <img id="avatar_pic" src="/img/avatar/1.jpg" alt="avatar_pic" style="box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -moz-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);
-    -webkit-box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .5);" />
-    
+<!-- anchorjs start -->
+<!-- async load function -->
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script type="text/javascript">
+  // async load function
+  function async (u, c) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) {
+      o.addEventListener('load', function(e) {
+        c(null, e);
+      }, false);
+    }
+    s.parentNode.insertBefore(o, s);
+  };
+</script>
+<script type="text/javascript">
+  //anchor-js, Doc:http://bryanbraun.github.io/anchorjs/
+  async ("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js", function() {
+    anchors.options = {
+      visible: 'hover',
+      placement: 'left',
+      // icon: 'ℬ'
+      icon: '❡'
+    };
+    anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+  });
+</script>
+<style>
+  /* place left on bigger screen */
+  @media all and (min-width: 800px) {
+    .anchorjs-link {
+      position: absolute;
+      left: -0.75em;
+      font-size: 1.1em;
+      margin-top: -0.1em;
+    }
+  }
+</style>
 
-    
-    <p>无限进步!</p>
-    
+<!-- anchorjs end -->
 
-    <!-- SNS Link -->
-    <ul class="list-inline">
-      
-
-      
-      <li>
-        <a target="_blank" href="https://github.com/caecarxu">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-
-      
-
-      
-
-      
-
-      
-      <li>
-        <a target="_blank" href="https://www.zhihu.com/people/ceacer-37">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa  fa-stack-1x fa-inverse">知</i>
-          </span>
-        </a>
-      </li>
-      
-
-      
-      <li>
-        <a target="_blank" href="http://weibo.com/7612955402">
-          <span class="fa-stack fa-lg">
-            <i class="fa fa-circle fa-stack-2x"></i>
-            <i class="fa fa-weibo fa-stack-1x fa-inverse"></i>
-          </span>
-        </a>
-      </li>
-      
-
-    </ul>
-  </div>
-</section>
-
-        <hr>
-    
-        <!-- RECENT POSTS -->
-
-<h5><a href="/">最近博文</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="../../cn/ArrayDeque/">
-      <li>ArrayDeque源码学习总结</li>
-    </a>
-    
-    <a href="../../cn/ArrayList/">
-      <li>java学习ArrayList总结</li>
-    </a>
-    
-    <a href="../../cn/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-      <li>Java设计模式总结</li>
-    </a>
-    
-    <a href="../../cn/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A4%BE%E7%BE%A4/">
-      <li>消失的社群</li>
-    </a>
-    
-    <a href="../../cn/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">
-      <li>使用hugo生成静态博客并部署在GitHub上</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Archives -->
-
-<h5><a href="/archives/">archives</a></h5>
-<div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/10/">October 2021</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="../../archives/2021/08/">August 2021</a><span class="archive-list-count">4</span></li></ul>
-</div>
-
-
-        <hr>
-    
-        <!-- Categories -->
-
-<h5><a href="/categories/">categories</a></h5>
-<div class="widget">
-  <ul>
-    
-    <a href="/categories/#随想">
-      <li>随想</li>
-    </a>
-    
-    <a href="/categories/#java">
-      <li>java</li>
-    </a>
-    
-    <a href="/categories/#java开发">
-      <li>java开发</li>
-    </a>
-    
-    <a href="/categories/#blog">
-      <li>blog</li>
-    </a>
-    
-  </ul>
-</div>
-
-
-        <hr>
-    
-</div>
-
-
-    
-  </div>
-</div>
 
 
 		<!-- Footer (contains ThemeColor、viewer) -->
