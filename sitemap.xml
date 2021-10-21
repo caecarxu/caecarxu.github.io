@@ -2,70 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite-url/tags/index.html</loc>
+    <loc>https://caecarxu.github.io/tags/index.html</loc>
     
     <lastmod>2021-10-18</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/index.html</loc>
+    <loc>https://caecarxu.github.io/categories/index.html</loc>
     
     <lastmod>2021-10-18</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/404.html</loc>
+    <loc>https://caecarxu.github.io/404.html</loc>
     
     <lastmod>2021-10-18</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/cn/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
+    <loc>https://caecarxu.github.io/cn/java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</loc>
     
     <lastmod>2021-09-30</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/cn/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A4%BE%E7%BE%A4/</loc>
+    <loc>https://caecarxu.github.io/cn/%E6%B6%88%E5%A4%B1%E7%9A%84%E7%A4%BE%E7%BE%A4/</loc>
     
     <lastmod>2021-08-15</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/cn/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</loc>
+    <loc>https://caecarxu.github.io/cn/hugo%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/</loc>
     
     <lastmod>2021-08-07</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/cn/%E8%AE%B0%E4%B8%80%E6%AC%A1Springboot+mybaits%E9%85%8D%E7%BD%AE%E7%BB%8F%E5%8E%86/</loc>
+    <loc>https://caecarxu.github.io/cn/%E8%AE%B0%E4%B8%80%E6%AC%A1Springboot+mybaits%E9%85%8D%E7%BD%AE%E7%BB%8F%E5%8E%86/</loc>
     
     <lastmod>2021-08-03</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/cn/java%E6%B3%9B%E5%9E%8B/</loc>
+    <loc>https://caecarxu.github.io/cn/java%E6%B3%9B%E5%9E%8B/</loc>
     
     <lastmod>2021-07-31</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/about/index.html</loc>
+    <loc>https://caecarxu.github.io/about/index.html</loc>
     
     <lastmod>2020-12-31</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yoursite-url/archive/index.html</loc>
+    <loc>https://caecarxu.github.io/archive/index.html</loc>
     
     <lastmod>2017-03-20</lastmod>
     
@@ -73,7 +73,7 @@
   
 
   <url>
-    <loc>http://yoursite-url/</loc>
+    <loc>https://caecarxu.github.io/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -81,49 +81,49 @@
 
   
   <url>
-    <loc>http://yoursite-url/tags/%E9%9A%8F%E6%83%B3/</loc>
+    <loc>https://caecarxu.github.io/tags/%E9%9A%8F%E6%83%B3/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/java/</loc>
+    <loc>https://caecarxu.github.io/tags/java/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/springboot/</loc>
+    <loc>https://caecarxu.github.io/tags/springboot/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/mybaits/</loc>
+    <loc>https://caecarxu.github.io/tags/mybaits/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/hugo/</loc>
+    <loc>https://caecarxu.github.io/tags/hugo/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/go/</loc>
+    <loc>https://caecarxu.github.io/tags/go/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/tags/blog/</loc>
+    <loc>https://caecarxu.github.io/tags/blog/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -132,28 +132,28 @@
 
   
   <url>
-    <loc>http://yoursite-url/categories/%E9%9A%8F%E6%83%B3/</loc>
+    <loc>https://caecarxu.github.io/categories/%E9%9A%8F%E6%83%B3/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/java/</loc>
+    <loc>https://caecarxu.github.io/categories/java/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/java%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://caecarxu.github.io/categories/java%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite-url/categories/blog/</loc>
+    <loc>https://caecarxu.github.io/categories/blog/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
