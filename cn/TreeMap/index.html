@@ -133,7 +133,7 @@
   <link rel="canonical" href="https://caecarxu.github.io/cn/TreeMap/">
   <title>
     
-      java学习TreeMap总结 - Mockingjay
+      TreeMap学习总结 - Mockingjay
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -379,7 +379,7 @@
               <a class="tag" href="/tags/#java" title="java">java</a>
               
             </div>
-            <h1>java学习TreeMap总结</h1>
+            <h1>TreeMap学习总结</h1>
             <h2 class="subheading">对java源码的学习和总结...</h2>
             <span class="meta">
               Posted by Ceacar on
@@ -446,7 +446,7 @@
 <p>TreeMap继承自<code>AbstractMap&lt;K,V&gt;</code> 实现<code>NavigableMap&lt;K,V&gt;</code>, <code>Cloneable</code> , <code>java.io.Serializable</code>接口</p>
 <p>Treemap中存在 <code>modCount</code>用来指示TreeMap对象结构化修改的次数，但是由于modCount被private形容，所以不可获取此变量。类中时使用<code>modCount</code>用于实现快速失败机制。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">int</span> modCount = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
-<p> TreeMap可以传入<code>Map</code>对象进行红黑树的建立</p>
+<p>TreeMap可以传入<code>Map</code>对象进行红黑树的建立</p>
 <p>若传入的Map对象是实现了<code>SortedMap接口的类的实例</code>，则使用buildFromSorted函数进行树的建立，以节省运行时间。最终使用<code>buildFromSorted</code>函数递归调用进行构建。</p>
 <p>若不是，则调用put函数逐个插入红黑树节点</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">public</span> <span class="title">TreeMap</span><span class="params">(Map&lt;? extends K, ? extends V&gt; m)</span> </span>&#123;</span><br><span class="line">       comparator = <span class="keyword">null</span>;</span><br><span class="line">       putAll(m);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putAll</span><span class="params">(Map&lt;? extends K, ? extends V&gt; map)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> mapSize = map.size();</span><br><span class="line">       <span class="keyword">if</span> (size==<span class="number">0</span> &amp;&amp; mapSize!=<span class="number">0</span> &amp;&amp; map <span class="keyword">instanceof</span> SortedMap) &#123;</span><br><span class="line">           <span class="keyword">if</span> (Objects.equals(comparator, ((SortedMap&lt;?,?&gt;)map).comparator())) &#123;</span><br><span class="line">               ++modCount;</span><br><span class="line">               <span class="keyword">try</span> &#123;</span><br><span class="line">                   buildFromSorted(mapSize, map.entrySet().iterator(),</span><br><span class="line">                                   <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">               &#125; <span class="keyword">catch</span> (java.io.IOException | ClassNotFoundException cannotHappen) &#123;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">return</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">super</span>.putAll(map);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">buildFromSorted</span><span class="params">(<span class="keyword">int</span> size, Iterator&lt;?&gt; it,</span></span></span><br><span class="line"><span class="function"><span class="params">                                java.io.ObjectInputStream str,</span></span></span><br><span class="line"><span class="function"><span class="params">                                V defaultVal)</span></span></span><br><span class="line"><span class="function">       <span class="keyword">throws</span>  java.io.IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.size = size;</span><br><span class="line">       root = buildFromSorted(<span class="number">0</span>, <span class="number">0</span>, size-<span class="number">1</span>, computeRedLevel(size),</span><br><span class="line">                              it, str, defaultVal);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
@@ -524,7 +524,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=java学习TreeMap总结&body=Hi,I found this website and thought you might like it https://caecarxu.github.io/cn/TreeMap/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=TreeMap学习总结&body=Hi,I found this website and thought you might like it https://caecarxu.github.io/cn/TreeMap/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
