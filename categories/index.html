@@ -235,15 +235,6 @@
 
           
           
-          <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
           
           
           <li>
@@ -257,12 +248,10 @@
           
           
           
-          
-          
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -274,6 +263,17 @@
             <a href="/tags/">
               
               标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
               
               
             </a>
@@ -450,9 +450,9 @@
         
         <a href="#java并发" title="java并发" rel="1">java并发</a>
         
-        <a href="#随想" title="随想" rel="1">随想</a>
-        
         <a href="#blog" title="blog" rel="1">blog</a>
+        
+        <a href="#随想" title="随想" rel="1">随想</a>
         
         <a href="#java开发" title="java开发" rel="1">java开发</a>
         
@@ -464,28 +464,6 @@
         <span class="fa fa-tag listing-seperator" id="java">
           <span class="tag-text">java</span>
         </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/cn/ArrayDeque/">
-            <h2 class="post-title">
-              ArrayDeque源码学习总结
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              对ArrayDeque源码的学习和总结...
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
         
         <!-- <li class="listing-item">
                   <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
@@ -514,9 +492,31 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/cn/TreeMap/">
+          <a href="/cn/ArrayDeque/">
             <h2 class="post-title">
-              TreeMap学习总结
+              ArrayDeque源码学习总结
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              对ArrayDeque源码的学习和总结...
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/cn/PriorityQueue/">
+            <h2 class="post-title">
+              PriorityQueue学习总结
               
               -- cn
               
@@ -536,9 +536,9 @@
                   <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
                   </li> -->
         <div class="post-preview">
-          <a href="/cn/PriorityQueue/">
+          <a href="/cn/TreeMap/">
             <h2 class="post-title">
-              PriorityQueue学习总结
+              TreeMap学习总结
               
               -- cn
               
@@ -651,35 +651,6 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="随想">
-          <span class="tag-text">随想</span>
-        </span>
-        
-        <!-- <li class="listing-item">
-                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
-                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
-                  </li> -->
-        <div class="post-preview">
-          <a href="/cn/消失的社群/">
-            <h2 class="post-title">
-              消失的社群
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              个人愚见...
-            </h3>
-            
-          </a>
-          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="blog">
           <span class="tag-text">blog</span>
         </span>
@@ -699,6 +670,35 @@
             
             <h3 class="post-subtitle">
               博客的创建...
+            </h3>
+            
+          </a>
+          <!-- <p class="post-meta">{{ post.date | date:"%Y-%m-%d" }}</p> -->
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="随想">
+          <span class="tag-text">随想</span>
+        </span>
+        
+        <!-- <li class="listing-item">
+                  <time datetime="{{ post.date | date:"%Y-%m-%d" }}">{{ post.date | date:"%Y-%m-%d" }}</time>
+                  <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+                  </li> -->
+        <div class="post-preview">
+          <a href="/cn/消失的社群/">
+            <h2 class="post-title">
+              消失的社群
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              个人愚见...
             </h3>
             
           </a>
@@ -1221,20 +1221,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>

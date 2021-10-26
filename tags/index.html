@@ -235,15 +235,6 @@
 
           
           
-          <li>
-            <a href="/about/">
-              
-              关于
-              
-              
-            </a>
-          </li>
-          
           
           
           <li>
@@ -257,12 +248,10 @@
           
           
           
-          
-          
           <li>
-            <a href="/categories/">
+            <a href="/about/">
               
-              分类
+              关于
               
               
             </a>
@@ -274,6 +263,17 @@
             <a href="/tags/">
               
               标签
+              
+              
+            </a>
+          </li>
+          
+          
+          
+          <li>
+            <a href="/categories/">
+              
+              分类
               
               
             </a>
@@ -448,13 +448,13 @@
         
         <a href="#java学习" title="java学习" rel="1">java学习</a>
         
-        <a href="#随想" title="随想" rel="1">随想</a>
-        
         <a href="#hugo" title="hugo" rel="1">hugo</a>
         
         <a href="#go" title="go" rel="1">go</a>
         
         <a href="#blog" title="blog" rel="1">blog</a>
+        
+        <a href="#随想" title="随想" rel="1">随想</a>
         
         <a href="#springboot" title="springboot" rel="1">springboot</a>
         
@@ -468,23 +468,6 @@
         <span class="fa fa-tag listing-seperator" id="java">
           <span class="tag-text">java</span>
         </span>
-        
-        <div class="post-preview">
-          <a href="/cn/ArrayDeque/">
-            <h2 class="post-title">
-              ArrayDeque源码学习总结
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              对ArrayDeque源码的学习和总结...
-            </h3>
-            
-          </a>
-        </div>
-        <hr>
         
         <div class="post-preview">
           <a href="/cn/ArrayList/">
@@ -504,33 +487,16 @@
         <hr>
         
         <div class="post-preview">
-          <a href="/cn/TreeMap/">
+          <a href="/cn/ArrayDeque/">
             <h2 class="post-title">
-              TreeMap学习总结
+              ArrayDeque源码学习总结
               
               -- cn
               
             </h2>
             
             <h3 class="post-subtitle">
-              对java源码的学习和总结...
-            </h3>
-            
-          </a>
-        </div>
-        <hr>
-        
-        <div class="post-preview">
-          <a href="/cn/java并发(1)/">
-            <h2 class="post-title">
-              《java并发编程的艺术》学习总结（1）
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              《java并发编程的艺术》
+              对ArrayDeque源码的学习和总结...
             </h3>
             
           </a>
@@ -555,6 +521,23 @@
         <hr>
         
         <div class="post-preview">
+          <a href="/cn/TreeMap/">
+            <h2 class="post-title">
+              TreeMap学习总结
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              对java源码的学习和总结...
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+        <div class="post-preview">
           <a href="/cn/java泛型/">
             <h2 class="post-title">
               Java泛型
@@ -565,6 +548,23 @@
             
             <h3 class="post-subtitle">
               java学习总结...
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+        <div class="post-preview">
+          <a href="/cn/java并发(1)/">
+            <h2 class="post-title">
+              《java并发编程的艺术》学习总结（1）
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              《java并发编程的艺术》
             </h3>
             
           </a>
@@ -649,30 +649,6 @@
       </div>
       
       <div class="one-tag-list">
-        <span class="fa fa-tag listing-seperator" id="随想">
-          <span class="tag-text">随想</span>
-        </span>
-        
-        <div class="post-preview">
-          <a href="/cn/消失的社群/">
-            <h2 class="post-title">
-              消失的社群
-              
-              -- cn
-              
-            </h2>
-            
-            <h3 class="post-subtitle">
-              个人愚见...
-            </h3>
-            
-          </a>
-        </div>
-        <hr>
-        
-      </div>
-      
-      <div class="one-tag-list">
         <span class="fa fa-tag listing-seperator" id="hugo">
           <span class="tag-text">hugo</span>
         </span>
@@ -736,6 +712,30 @@
             
             <h3 class="post-subtitle">
               博客的创建...
+            </h3>
+            
+          </a>
+        </div>
+        <hr>
+        
+      </div>
+      
+      <div class="one-tag-list">
+        <span class="fa fa-tag listing-seperator" id="随想">
+          <span class="tag-text">随想</span>
+        </span>
+        
+        <div class="post-preview">
+          <a href="/cn/消失的社群/">
+            <h2 class="post-title">
+              消失的社群
+              
+              -- cn
+              
+            </h2>
+            
+            <h3 class="post-subtitle">
+              个人愚见...
             </h3>
             
           </a>
@@ -1276,20 +1276,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
