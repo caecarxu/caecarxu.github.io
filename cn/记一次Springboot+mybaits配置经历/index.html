@@ -235,8 +235,6 @@
 
           
           
-          
-          
           <li>
             <a href="/about/">
               
@@ -249,9 +247,9 @@
           
           
           <li>
-            <a href="/categories/">
+            <a href="/archive/">
               
-              分类
+              归档
               
               
             </a>
@@ -259,10 +257,12 @@
           
           
           
+          
+          
           <li>
-            <a href="/archive/">
+            <a href="/categories/">
               
-              归档
+              分类
               
               
             </a>
@@ -478,12 +478,14 @@
 <p>替换springboot版本为2.5.3</p>
 <figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&lt;version&gt;</span><span class="attribute">2</span>.<span class="number">5</span>.<span class="number">3</span>&lt;/version&gt;</span><br></pre></td></tr></table></figure>
 <p>成功启动springboot！</p>
-<h2 id="mybais报错-Invalid-bound-statement"><a href="#mybais报错-Invalid-bound-statement" class="headerlink" title="mybais报错 Invalid bound statement"></a>mybais报错 Invalid bound statement</h2><p>在启动springboot后，对Controller进行测试，结果出现mybatis报错Invalid bound statement</p>
+<h2 id="mybais报错-Invalid-bound-statement">mybais报错 Invalid bound statement</h2>
+<p>在启动springboot后，对Controller进行测试，结果出现mybatis报错Invalid bound statement</p>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">org<span class="selector-class">.apache</span><span class="selector-class">.ibatis</span><span class="selector-class">.binding</span><span class="selector-class">.BindingException</span>: Invalid bound statement (not found): com<span class="selector-class">.mybatislearn</span><span class="selector-class">.mockingjay</span><span class="selector-class">.mapper</span><span class="selector-class">.UserMapper</span>.loadUserByUsername</span><br><span class="line">	at org<span class="selector-class">.apache</span><span class="selector-class">.ibatis</span><span class="selector-class">.binding</span>.MapperMethod<span class="variable">$SqlCommand</span>.&lt;init&gt;(MapperMethod<span class="selector-class">.java</span>:<span class="number">235</span>) ~<span class="selector-attr">[mybatis-3.5.6.jar:3.5.6]</span></span><br><span class="line">	at org<span class="selector-class">.apache</span><span class="selector-class">.ibatis</span><span class="selector-class">.binding</span><span class="selector-class">.MapperMethod</span>.&lt;init&gt;(MapperMethod<span class="selector-class">.java</span>:<span class="number">53</span>) ~<span class="selector-attr">[mybatis-3.5.6.jar:3.5.6]</span></span><br><span class="line">	at org<span class="selector-class">.apache</span><span class="selector-class">.ibatis</span><span class="selector-class">.binding</span><span class="selector-class">.MapperProxy</span>.lambda<span class="variable">$cachedInvoker</span>$<span class="number">0</span>(MapperProxy<span class="selector-class">.java</span>:<span class="number">115</span>) ~<span class="selector-attr">[mybatis-3.5.6.jar:3.5.6]</span></span><br><span class="line">	at java.base/java<span class="selector-class">.util</span><span class="selector-class">.concurrent</span><span class="selector-class">.ConcurrentHashMap</span><span class="selector-class">.computeIfAbsent</span>(ConcurrentHashMap<span class="selector-class">.java</span>:<span class="number">1708</span>) ~<span class="selector-attr">[na:na]</span></span><br><span class="line">	at org<span class="selector-class">.apache</span><span class="selector-class">.ibatis</span><span class="selector-class">.binding</span><span class="selector-class">.MapperProxy</span><span class="selector-class">.cachedInvoker</span>(MapperProxy<span class="selector-class">.java</span>:<span class="number">102</span>) ~<span class="selector-attr">[mybatis-3.5.6.jar:3.5.6]</span></span><br><span class="line">	at org<span class="selector-class">.apache</span><span class="selector-class">.ibatis</span><span class="selector-class">.binding</span><span class="selector-class">.MapperProxy</span><span class="selector-class">.invoke</span>(MapperProxy<span class="selector-class">.java</span>:<span class="number">85</span>) ~<span class="selector-attr">[mybatis-3.5.6.jar:3.5.6]</span></span><br><span class="line">	at com<span class="selector-class">.sun</span><span class="selector-class">.proxy</span>.<span class="variable">$Proxy57</span><span class="selector-class">.loadUserByUsername</span>(Unknown Source) ~<span class="selector-attr">[na:na]</span></span><br><span class="line">	at com<span class="selector-class">.mybatislearn</span><span class="selector-class">.mockingjay</span><span class="selector-class">.service</span><span class="selector-class">.UserServiceImpl</span><span class="selector-class">.queryUserByname</span>(UserServiceImpl<span class="selector-class">.java</span>:<span class="number">15</span>) ~<span class="selector-attr">[classes/:na]</span></span><br><span class="line">	at com<span class="selector-class">.mybatislearn</span><span class="selector-class">.mockingjay</span><span class="selector-class">.controller</span><span class="selector-class">.UserController</span><span class="selector-class">.GetUser</span>(UserController<span class="selector-class">.java</span>:<span class="number">21</span>) ~<span class="selector-attr">[classes/:na]</span></span><br><span class="line">	......</span><br></pre></td></tr></table></figure>
 <p>在折腾了一上午之后，发现还是配置的错误：</p>
 <p>在UserMapper文件中的namespace没有写对！！！！！</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">mapper</span> <span class="meta-keyword">PUBLIC</span> <span class="meta-string">&quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span> <span class="meta-string">&quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">&quot;com.mybatislearn.mockingjay.mapper.UserMapper&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">id</span>=<span class="string">&quot;UserMap&quot;</span> <span class="attr">type</span>=<span class="string">&quot;com.mybatislearn.mockingjay.entity.User&quot;</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">&quot;id&quot;</span> <span class="attr">property</span>=<span class="string">&quot;id&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;avatar&quot;</span> <span class="attr">property</span>=<span class="string">&quot;avatar&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;createTime&quot;</span> <span class="attr">property</span>=<span class="string">&quot;createTime&quot;</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;email&quot;</span> <span class="attr">property</span>=<span class="string">&quot;email&quot;</span>  /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;nickname&quot;</span> <span class="attr">property</span>=<span class="string">&quot;nickname&quot;</span>  /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;password&quot;</span> <span class="attr">property</span>=<span class="string">&quot;password&quot;</span>  /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;type&quot;</span> <span class="attr">property</span>=<span class="string">&quot;type&quot;</span>  /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;updateTime&quot;</span> <span class="attr">property</span>=<span class="string">&quot;updateTime&quot;</span>  /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">&quot;username&quot;</span> <span class="attr">property</span>=<span class="string">&quot;username&quot;</span>  /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--  根据用户名查询用户--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;loadUserByUsername&quot;</span> <span class="attr">resultMap</span>=<span class="string">&quot;UserMap&quot;</span>&gt;</span></span><br><span class="line">        select * from t_user where username=#&#123;username&#125;</span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次的错误排查用了我将近一天的时间，对于新手来说，太折磨了</p>
+<h2 id="总结">总结</h2>
+<p>这次的错误排查用了我将近一天的时间，对于新手来说，太折磨了</p>
 <p>于是，写一个文档进行记录，防止下次再遇到同样的问题。</p>
 <p>springboot启动失败的时候，若日志显示找不到什么文件，估计是配置的问题。</p>
 <p>配置项目的时候最好再官网上查查稳定的版本。</p>
@@ -1165,20 +1167,5 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-</body>
+	</body>
 </html>
