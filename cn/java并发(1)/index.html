@@ -448,11 +448,12 @@
         <h2 id="java并发编程的底层实现原理">java并发编程的底层实现原理</h2>
 <h3 id="volatile的定义与实现原理">volatile的定义与实现原理</h3>
 <p><strong>定义</strong>：为了却博爱共享变量能被准确和一致地更新，线程应该确保通过排他锁单独获得这个变量。java提供volatile，在某些情况下比锁要更加方便。</p>
-<p>volatile在<strong>指令级</strong>（Lock指令）上做的事情：</p>
+<p>volatile在<strong>指令级</strong>（Lock指令/内存嗅探）上做的事情：</p>
 <ol>
 <li>将当前处理器缓存行的数据写回到系统内存</li>
 <li>这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效</li>
 </ol>
+<p>volatile使用内存屏障实现禁止重排序。</p>
 <h3 id="synchronized的实现原理和应用">synchronized的实现原理和应用</h3>
 <p>synchronized实现同步的基础：Java中的每一个对象都可以作为锁：</p>
 <ol>
