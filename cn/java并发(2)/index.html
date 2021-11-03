@@ -557,7 +557,6 @@
 <p>写final域的重排序规则对编译器和处理器增加了如下约束</p>
 <p>在构<strong>造函数内</strong>对一个final引用的对象的成员域的<strong>写入</strong>，与随后在构造函数外把这个被构造对象的引用赋值给一个引用变量，这两个操作之间不能重排序。</p>
 <p>在构造函数返回前，被构造对象的引用不能为其他线程所见，因为此时的final域可能还没有被初始化。在构造函数返回后，任意线程都将保证能看到final域正确初始化之后的值。</p>
-<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/test.jpeg" alt="不知道为什么就很想发一张照片"></p>
 
 
         <hr>
