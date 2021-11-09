@@ -450,7 +450,7 @@
       《java并发编程的艺术》学习总结（4）
     </h2>
     <h3 class="post-subtitle">
-      《java并发编程的艺术》
+      Java中的显式锁
     </h3>
     <div class="post-content-preview">
       Java中的显式锁
@@ -495,7 +495,7 @@ java中的有内置锁，关键字为synchronized
       《java并发编程的艺术》学习总结（3）
     </h2>
     <h3 class="post-subtitle">
-      《java并发编程的艺术》
+      Java并发编程基础
     </h3>
     <div class="post-content-preview">
       Java并发编程基础
@@ -547,7 +547,7 @@ java中的有内置锁，关键字为synchronized
       《java并发编程的艺术》学习总结（2）
     </h2>
     <h3 class="post-subtitle">
-      《java并发编程的艺术》
+      Java内存模型（JMM）
     </h3>
     <div class="post-content-preview">
       Java内存模型（JMM）
@@ -597,7 +597,7 @@ Java内存模型基础
       《java并发编程的艺术》学习总结（1）
     </h2>
     <h3 class="post-subtitle">
-      《java并发编程的艺术》
+      java并发编程的底层实现原理
     </h3>
     <div class="post-content-preview">
       java并发编程的底层实现原理
@@ -1565,5 +1565,20 @@ start: '#bbbbee', end: '#0085a1' } }; $('#tag_cloud a').tagcloud(); }) } </scrip
 
 
 		
-	</body>
+	<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
 </html>
