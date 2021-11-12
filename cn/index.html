@@ -445,6 +445,46 @@
   <!-- top end -->
   
 
+  <a href="/cn/java并发(6)/">
+    <h2 class="post-title">
+      《java并发编程的艺术》学习总结（6）
+    </h2>
+    <h3 class="post-subtitle">
+      ConcurrentLinkedQueue学习总结
+    </h3>
+    <div class="post-content-preview">
+      ConcurrentLinkedQueue学习总结
+第一次见识使用CAS的无锁并发结构，大为赞叹，妙啊~
+
+简介在软件设计中，常常会碰到在并发的情况下使用队列。
+在java中提供的安全队列有Vector，Collections.synchronizedList,以及ConcurrentLinkedQueue等，供我们选择
+数据结构ConcurrentLinkedQueue基于链接节点的无界线......
+    </div>
+  </a>
+  
+  <p class="post-meta" style="margin: 10px 0;">
+    Posted by Ceacar on
+    2021-11-12
+  </p>
+  <div class="tags">
+    
+    <a href="/tags/#java" title="java">java</a>
+    
+    <a href="/tags/#java学习" title="java学习">java学习</a>
+    
+  </div>
+  
+
+</div>
+<hr>
+
+<div class="post-preview">
+  
+  <!-- top start (article top hot config) -->
+  
+  <!-- top end -->
+  
+
   <a href="/cn/java并发(5)/">
     <h2 class="post-title">
       《java并发编程的艺术》学习总结（5）
@@ -645,15 +685,13 @@ Java内存模型基础
       java并发编程的底层实现原理
     </h3>
     <div class="post-content-preview">
-      java并发编程的底层实现原理
-volatile的定义与实现原理
-定义：为了却博爱共享变量能被准确和一致地更新，线程应该确保通过排他锁单独获得这个变量。java提供volatile，在某些情况下比锁要更加方便。
+      java并发编程的底层实现原理volatile的定义与实现原理定义：Java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致地更新，线程应该确保通过排他锁单独获得这个变量
 volatile在指令级（Lock指令/内存嗅探）上做的事情：
 
 将当前处理器缓存行的数据写回到系统内存
 这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效
 
-volat......
+volatile使用内存屏障实现禁止重......
     </div>
   </a>
   
@@ -829,44 +867,6 @@ ArrayDeque继承了AbstractCollection抽象类，实现了Deque, Cloneable, Seri
 </div>
 <hr>
 
-<div class="post-preview">
-  
-  <!-- top start (article top hot config) -->
-  
-  <!-- top end -->
-  
-
-  <a href="/cn/ArrayList/">
-    <h2 class="post-title">
-      ArrayList学习总结
-    </h2>
-    <h3 class="post-subtitle">
-      对ArrayList源码的学习和总结...
-    </h3>
-    <div class="post-content-preview">
-      
-源码来自与OpenJDK 17
-我选择个人认为重要的点进行总结
-
-ArrayList继承自AbstractList,实现了List, RandomAccess, Cloneable, java.io.Serializable接口
-12public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt;	        implement......
-    </div>
-  </a>
-  
-  <p class="post-meta" style="margin: 10px 0;">
-    Posted by Ceacar on
-    2021-10-16
-  </p>
-  <div class="tags">
-    
-    <a href="/tags/#java" title="java">java</a>
-    
-  </div>
-  
-
-</div>
-<hr>
-
 
   <!-- Pager -->
   <ul class="pager">
@@ -899,11 +899,11 @@ ArrayList继承自AbstractList,实现了List, RandomAccess, Cloneable, java.io.S
   <div class="tags">
     
     
-    <a href="/tags/#java" title="java" rel="13">java</a>
+    <a href="/tags/#java" title="java" rel="14">java</a>
     
     
     
-    <a href="/tags/#java学习" title="java学习" rel="5">java学习</a>
+    <a href="/tags/#java学习" title="java学习" rel="6">java学习</a>
     
     
     
@@ -1008,6 +1008,10 @@ ArrayList继承自AbstractList,实现了List, RandomAccess, Cloneable, java.io.S
 <div class="widget">
   <ul>
     
+    <a href="java%E5%B9%B6%E5%8F%91(6)/">
+      <li>《java并发编程的艺术》学习总结（6）</li>
+    </a>
+    
     <a href="java%E5%B9%B6%E5%8F%91(5)/">
       <li>《java并发编程的艺术》学习总结（5）</li>
     </a>
@@ -1024,10 +1028,6 @@ ArrayList继承自AbstractList,实现了List, RandomAccess, Cloneable, java.io.S
       <li>《java并发编程的艺术》学习总结（2）</li>
     </a>
     
-    <a href="java%E5%B9%B6%E5%8F%91(1)/">
-      <li>《java并发编程的艺术》学习总结（1）</li>
-    </a>
-    
   </ul>
 </div>
 
@@ -1038,7 +1038,7 @@ ArrayList继承自AbstractList,实现了List, RandomAccess, Cloneable, java.io.S
 
 <h5><a href="/archives/">archives</a></h5>
 <div class="widget">
-  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/11/">November 2021</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/08/">August 2021</a><span class="archive-list-count">4</span></li></ul>
+  <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/11/">November 2021</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/10/">October 2021</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="../archives/2021/08/">August 2021</a><span class="archive-list-count">4</span></li></ul>
 </div>
 
 

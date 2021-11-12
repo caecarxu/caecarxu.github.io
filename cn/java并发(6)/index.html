@@ -130,10 +130,10 @@
   <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script> <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> <![endif]-->
 
   <!-- ga & ba script hoook -->
-  <link rel="canonical" href="https://caecarxu.github.io/cn/java并发(1)/">
+  <link rel="canonical" href="https://caecarxu.github.io/cn/java并发(6)/">
   <title>
     
-      《java并发编程的艺术》学习总结（1） - Mockingjay
+      《java并发编程的艺术》学习总结（6） - Mockingjay
     
   </title>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -343,19 +343,19 @@
     .body--light {
       /* intro-header */
       --intro-header-background-image-url-home: url('/img/header_img/bg2.jpg');
-      --intro-header-background-image-url-post: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1169.JPEG');
-      --intro-header-background-image-url-page: url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1169.JPEG');
+      --intro-header-background-image-url-post: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1365.JPEG');
+      --intro-header-background-image-url-page: url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1365.JPEG');
     }
     .body--dark {
       --intro-header-background-image-url-home: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/img/header_img/bg2.jpg');
-      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1169.JPEG');
-      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1169.JPEG');
+      --intro-header-background-image-url-post: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1365.JPEG');
+      --intro-header-background-image-url-page: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url('/https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1365.JPEG');
     }
 
     header.intro-header {
        /*post*/
         background-image: var(--intro-header-background-image-url-post);
-        /* background-image: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1169.JPEG'); */
+        /* background-image: url('https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1365.JPEG'); */
       
     }
 
@@ -381,11 +381,11 @@
               <a class="tag" href="/tags/#java学习" title="java学习">java学习</a>
               
             </div>
-            <h1>《java并发编程的艺术》学习总结（1）</h1>
-            <h2 class="subheading">java并发编程的底层实现原理</h2>
+            <h1>《java并发编程的艺术》学习总结（6）</h1>
+            <h2 class="subheading">ConcurrentLinkedQueue学习总结</h2>
             <span class="meta">
               Posted by Ceacar on
-              2021-10-25
+              2021-11-12
             </span>
 
 
@@ -425,95 +425,88 @@
       <!-- Post Container -->
       <div class="col-lg-8 col-lg-offset-1 col-md-10 col-md-offset-1 post-container">
 
-        <h2 id="java并发编程的底层实现原理"><a href="#java并发编程的底层实现原理" class="headerlink" title="java并发编程的底层实现原理"></a>java并发编程的底层实现原理</h2><h3 id="volatile的定义与实现原理"><a href="#volatile的定义与实现原理" class="headerlink" title="volatile的定义与实现原理"></a>volatile的定义与实现原理</h3><p><strong>定义</strong>：<strong>Java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致地更新，线程应该确保通过排他锁单独获得这个变量</strong></p>
-<p>volatile在<strong>指令级</strong>（Lock指令/内存嗅探）上做的事情：</p>
-<ol>
-<li>将当前处理器缓存行的数据写回到系统内存</li>
-<li>这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效</li>
-</ol>
-<p>volatile使用内存屏障实现禁止重排序。</p>
-<h3 id="synchronized的实现原理和应用"><a href="#synchronized的实现原理和应用" class="headerlink" title="synchronized的实现原理和应用"></a>synchronized的实现原理和应用</h3><p>synchronized实现同步的基础：Java中的每一个对象都可以作为锁：</p>
-<ol>
-<li>对于同步方法，锁是当前示例对象</li>
-<li>对于静态同步方法，锁是当前类的Class对象</li>
-<li>对于同步方法块，锁是Sychonized括号里配置的对象</li>
-</ol>
-<p>Synchonidze在JVM里的实现原理：</p>
-<p><strong>JVM基于进入和退出Monitor对象来实现方法同步和代码块同步。</strong></p>
-<p>代码块同步是使用monitorenter和monitorexit指令实现的，而方法同步是使用另外一种方式实现的，细节在JVM规范里并没有详细说明</p>
-<h4 id="Java对象头"><a href="#Java对象头" class="headerlink" title="Java对象头"></a>Java对象头</h4><p>Java对象头的组成结构</p>
-<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/00003.jpeg" alt="Java对象头组成结构"></p>
-<p>其中MarkWord里的储存内容及其状态变化</p>
-<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/00005.jpeg" alt="Mark Word的状态变化"></p>
-<h4 id="锁的升级于对比"><a href="#锁的升级于对比" class="headerlink" title="锁的升级于对比"></a>锁的升级于对比</h4><ol>
-<li><h5 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h5><p>​        一般来说，锁总是由同一线程多次获得，为了减少CAS操作，引入偏向锁。当一个线程访问同步代码块并获取锁时，会在<strong>Mark Word</strong>里存储锁偏向的<strong>线程ID</strong>。在线程进入和退出同步块时不再通过CAS操作来加锁和解锁，<strong>而是检测Mark Word里是否存储着指向当前线程的偏向锁</strong>。引入偏向锁是为了在无多线程竞争的情况下尽量减少不必要的轻量级锁执行路径，因为轻量级锁的获取及释放依赖多次CAS原子指令，而偏向锁只需要在置换ThreadID的时候依赖一次CAS原子指令即可。</p>
+        <h1 id="ConcurrentLinkedQueue学习总结"><a href="#ConcurrentLinkedQueue学习总结" class="headerlink" title="ConcurrentLinkedQueue学习总结"></a>ConcurrentLinkedQueue学习总结</h1><blockquote>
+<p>第一次见识使用CAS的无锁并发结构，大为赞叹，妙啊~</p>
+</blockquote>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在软件设计中，常常会碰到在并发的情况下使用队列。</p>
+<p>在java中提供的安全队列有Vector，Collections.synchronizedList,以及ConcurrentLinkedQueue等，供我们选择</p>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><p>ConcurrentLinkedQueue基于链接节点的无界线程安全队列，按照FIFO原则对元素进行排序，加入队列的元素不允许为null</p>
+<p>ConcurrentLinkedQueue内部结构为实现一个FIFO队列，使用单链表的结构进行连接。类内部存在<code>head</code>和<code>tail</code>对象来记录头节点和尾节点（尾节点其实不一定是尾节点）。</p>
+<p>ConcurrentLinkedQueue的数据结构如下：</p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/java-thread-x-juc-concurrentlinkedqueue-1.png" alt="结构"></p>
+<p><code>head</code>和<code>tail</code>节点都是由volatile修饰的，具有一致性。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Node&lt;E&gt; tail;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> <span class="keyword">volatile</span> Node&lt;E&gt; head;</span><br></pre></td></tr></table></figure>
+<p>由数据节点<code>Node</code>的定义可知，节点所携带的item，以及 next 对象也是volatile修饰的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span>&lt;<span class="title">E</span>&gt; </span>&#123;</span><br><span class="line">       <span class="keyword">volatile</span> E item;</span><br><span class="line">       <span class="keyword">volatile</span> Node&lt;E&gt; next;</span><br><span class="line"></span><br><span class="line">       Node(E item) &#123;</span><br><span class="line">           UNSAFE.putObject(<span class="keyword">this</span>, itemOffset, item);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">boolean</span> <span class="title">casItem</span><span class="params">(E cmp, E val)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, itemOffset, cmp, val);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">void</span> <span class="title">lazySetNext</span><span class="params">(Node&lt;E&gt; val)</span> </span>&#123;</span><br><span class="line">           UNSAFE.putOrderedObject(<span class="keyword">this</span>, nextOffset, val);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">boolean</span> <span class="title">casNext</span><span class="params">(Node&lt;E&gt; cmp, Node&lt;E&gt; val)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, nextOffset, cmp, val);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="comment">// Unsafe mechanics</span></span><br><span class="line"></span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> sun.misc.Unsafe UNSAFE;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> itemOffset;</span><br><span class="line">       <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> nextOffset;</span><br><span class="line"></span><br><span class="line">       <span class="keyword">static</span> &#123;</span><br><span class="line">           <span class="keyword">try</span> &#123;</span><br><span class="line">               UNSAFE = sun.misc.Unsafe.getUnsafe();</span><br><span class="line">               Class&lt;?&gt; k = Node.class;</span><br><span class="line">               itemOffset = UNSAFE.objectFieldOffset</span><br><span class="line">                   (k.getDeclaredField(<span class="string">&quot;item&quot;</span>));</span><br><span class="line">               nextOffset = UNSAFE.objectFieldOffset</span><br><span class="line">                   (k.getDeclaredField(<span class="string">&quot;next&quot;</span>));</span><br><span class="line">           &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">               <span class="keyword">throw</span> <span class="keyword">new</span> Error(e);</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="非阻塞算法"><a href="#非阻塞算法" class="headerlink" title="非阻塞算法"></a>非阻塞算法</h2><h3 id="阻塞、无锁与无等待的区别"><a href="#阻塞、无锁与无等待的区别" class="headerlink" title="阻塞、无锁与无等待的区别"></a>阻塞、无锁与无等待的区别</h3><p><strong>阻塞，blocking</strong></p>
+<blockquote>
+<p>一个方法被称为阻塞的，即这个方法在其演进过程中不能正常运行直到其他（占有锁的）线程释放。</p>
+</blockquote>
+<p>也就是普通的synchronized方法，同一时间内只有一个线程占有了锁，其他线程只能等待。但是这个占有锁的线程并不一定真的在工作（可能被挂起了）。</p>
+<p><strong>无锁，lock-free</strong></p>
+<blockquote>
+<p>允许单个线程饿死，但保证系统范围的吞吐量.如果所有线程运行了足够长时间后，至少有一个线程能获得进展，那么这个算法是无锁的。</p>
+</blockquote>
+<p>系统中无论何时，始终有一个线程在工作。</p>
+<p><strong>无等待，wait-free</strong></p>
+<blockquote>
+<p>假如一个方法是无等待的，那么它保证了每一次调用都可以在有限的步骤内结束。</p>
+</blockquote>
+<p>系统中的所有线程，都会在有限时间内结束，无论如何也不可能出现饿死(starving)的情况。</p>
+<p>Concurrent采用了wait-free算法进行实现，基于<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https%3A%2F%2Fwww.cs.rochester.edu%2Fresearch%2Fsynchronization%2Fpseudocode%2Fqueues.html">Michael &amp; Scott算法</a>的基础上做了一些修改的。</p>
+<h2 id="使用CAS来保证并发下的正确性"><a href="#使用CAS来保证并发下的正确性" class="headerlink" title="使用CAS来保证并发下的正确性"></a>使用CAS来保证并发下的正确性</h2><p>ConcurrentLinkedQueue采用一系列CAS操作来保证并发下队列运行的正确性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">casTail</span><span class="params">(Node&lt;E&gt; cmp, Node&lt;E&gt; val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, tailOffset, cmp, val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">casHead</span><span class="params">(Node&lt;E&gt; cmp, Node&lt;E&gt; val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, headOffset, cmp, val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以及Node中使用的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">casItem</span><span class="params">(E cmp, E val)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, itemOffset, cmp, val);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">void</span> <span class="title">lazySetNext</span><span class="params">(Node&lt;E&gt; val)</span> </span>&#123;</span><br><span class="line">           UNSAFE.putOrderedObject(<span class="keyword">this</span>, nextOffset, val);</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">       <span class="function"><span class="keyword">boolean</span> <span class="title">casNext</span><span class="params">(Node&lt;E&gt; cmp, Node&lt;E&gt; val)</span> </span>&#123;</span><br><span class="line">           <span class="keyword">return</span> UNSAFE.compareAndSwapObject(<span class="keyword">this</span>, nextOffset, cmp, val);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>这些CAS的操作最终都会调用<code>UNSAFE</code>类中的<code>native</code>方法实现CAS</p>
+<h3 id="关于ABA问题"><a href="#关于ABA问题" class="headerlink" title="关于ABA问题"></a>关于ABA问题</h3><p>源算法中CAS 在更新某个指针的时候，compare 的是一个地址，可能出现 compare 成功但是该地址指向的对象其实已经变化。原算法中使用计数器来解决ABA问题。</p>
+<p>但是因为有 GC 的存在，一个内存地址能被复用，一定是内存里没有任何引用能指向该地址之前存放的对象。所以，CAS算法本身需要一个指向对象的指针，所以不会改变指向的对象。</p>
+<p>具体来说，比如 ConcurrentLinkedQueue 里有很多 casTail(A, B) 即 tail 是否还指向 A 是的话改 tail 指向 B。队列内 Node 都是有方向的，并且每次入队新元素就会重新分配内存生成新 Node，所以 tail 不可能开始指向 A 后来又改到 C 又改回 A，如果出现了意味着 A 入队后 (从 tail 入队) 又入队了 C，结果 A (不是值，是 Node) 又入队了，而这是不可能的。</p>
+<h2 id="具体源码实现"><a href="#具体源码实现" class="headerlink" title="具体源码实现"></a>具体源码实现</h2><h3 id="入队-offer函数"><a href="#入队-offer函数" class="headerlink" title="入队(offer函数)"></a>入队(offer函数)</h3><p><strong>注意的点：</strong></p>
 <ul>
-<li><strong>偏向锁的撤销</strong><ul>
-<li>当其他线程尝试竞争偏向锁时，偏向锁才会撤销</li>
-<li>偏向锁撤销时需要等待全局安全点</li>
-<li>当存在线程竞争时，检查持有偏向锁的线程是否或者，若否，则设置为无锁，若是，则升级为轻量级锁</li>
+<li>tail不总是尾节点</li>
+<li>CAS自旋的设计</li>
 </ul>
-</li>
-<li><strong>关闭偏向锁</strong><ul>
-<li>通过JVM参数关闭偏向锁：<strong>-XX:-UseBiasedLocking=false</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><h5 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h5><ul>
-<li><p><strong>轻量级锁加锁</strong></p>
-<p>在线程执行同步块之前，JVM会现在当前线程的栈帧中创建用于储存锁记录的空间，并将对象头中的Mark Word复制到锁记录中。然后线程尝试使用CAS将对象头中的Mark Word替换为指向锁记录的指针。如果成功，当前线程获得锁，如果失败，表示其他线程竞争锁，当前线程便尝试使用自旋来获取锁。</p>
-</li>
-<li><p><strong>轻量级锁解锁</strong></p>
-<p>轻量级解锁时，会使用原子的CAS操作将Displaced Mark Word替换回到对象头，如果成功，则表示没有竞争发生。如果失败，表示当前锁存在竞争，锁就会膨胀成重量级锁。结束竞争失败线程的自旋，并阻塞。</p>
-</li>
-</ul>
-</li>
-<li><h5 id="重量级锁"><a href="#重量级锁" class="headerlink" title="重量级锁"></a>重量级锁</h5><ul>
-<li>在重量级锁状态下，除了获得锁的线程会运行之外，其他的线程都是阻塞的</li>
-</ul>
-</li>
-</ol>
-<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/00009.jpeg" alt="锁的优缺点对比"></p>
-<p><strong><em>java Synchonized原理图</em></strong></p>
-<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/v2-9db4211af1be81785f6cc51a58ae6054_r.jpg" alt="Sychonized原理"></p>
-<h3 id="原子操作的实现原理"><a href="#原子操作的实现原理" class="headerlink" title="原子操作的实现原理"></a>原子操作的实现原理</h3><h4 id="原子操作的相关术语"><a href="#原子操作的相关术语" class="headerlink" title="原子操作的相关术语"></a>原子操作的相关术语</h4><ol>
-<li>CAS 比较并交换（Compare and Swap）</li>
-<li>CPU流水线 （CPU pipeline）</li>
-<li>内存顺序冲突（Memory order violation）</li>
-</ol>
-<h4 id="处理器实现原子操作"><a href="#处理器实现原子操作" class="headerlink" title="处理器实现原子操作"></a>处理器实现原子操作</h4><ol>
-<li><strong>使用总线锁</strong>：使用处理器提供的一个LOCK＃信号，当一个处理器在总线上输出此信号时，其他处理器的请求将被阻塞住，那么该处理器可以独占共享内存。</li>
-<li><strong>使用缓存锁</strong>：存区域如果被缓存在处理器的缓存行中，并且在Lock操作期间被锁定，那么当它执行锁操作回写到内存时，处理器不在总线上声言LOCK＃信号，而是修改内部的内存地址，并允许它的缓存一致性机制来保证操作的原子性</li>
-</ol>
-<h4 id="Java实现原子操作的方法"><a href="#Java实现原子操作的方法" class="headerlink" title="Java实现原子操作的方法"></a>Java实现原子操作的方法</h4><ol>
-<li><p><strong>使用循环CAS实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">offer</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    checkNotNull(e);</span><br><span class="line">    <span class="keyword">final</span> Node&lt;E&gt; newNode = <span class="keyword">new</span> Node&lt;E&gt;(e);</span><br><span class="line">    <span class="comment">// t 指向老的 tail，p 指向最新的 tail，q 指向 tail 的 next</span></span><br><span class="line">    <span class="keyword">for</span> (Node&lt;E&gt; t = tail, p = t;;) &#123;</span><br><span class="line">        Node&lt;E&gt; q = p.next;</span><br><span class="line">        <span class="keyword">if</span> (q == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 如果 q 是空则 p 指向的是实际队尾</span></span><br><span class="line">            <span class="keyword">if</span> (p.casNext(<span class="keyword">null</span>, newNode)) &#123;</span><br><span class="line">            <span class="comment">// CAS 的更新队尾的 next 指针，指向新入队 Node</span></span><br><span class="line">            <span class="comment">// 如果成功，则说明入队成功，因为 tail 是每入队两次才更新</span></span><br><span class="line">            <span class="comment">// 所以只有当前 tail 和 old tail 不等时候才会更新 tail</span></span><br><span class="line">                <span class="keyword">if</span> (p != t) <span class="comment">// hop two nodes at a time</span></span><br><span class="line">                <span class="comment">// 即使更新失败也没事，说明有别的线程已经更新了 tail</span></span><br><span class="line">                    casTail(t, newNode);  <span class="comment">// Failure is OK.</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// Lost CAS race to another thread; re-read next</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (p == q)</span><br><span class="line">        <span class="comment">// tail 的 next 指向自己，说明 tail 已经被出队，接着读一下最新 tail</span></span><br><span class="line">        <span class="comment">// 看最新的 tail 和循环开始缓存在 t 的 tail 是否相等</span></span><br><span class="line">        <span class="comment">// 相等则说明新读的这个 tail 指针也被出队了，我们只有从 head 一步一步循环去找 tail</span></span><br><span class="line">        <span class="comment">// 如果不等则说明 tail 已经被其它线程更新了，我们将新的 tail 再缓存在 t 再重来一次</span></span><br><span class="line">            p = (t != (t = tail)) ? t : head;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p = (p != t &amp;&amp; t != (t = tail)) ? t : q;</span><br><span class="line">            <span class="comment">//如果 p 和 t 相等，说明 p 在循环开始后还未向后挪动过，那我们就让 p 向后挪一格</span></span><br><span class="line">            <span class="comment">//如果 p 和 t 不相等，则说明 p 已经向后移动过一次，且其他线程在争抢入队成功</span></span><br><span class="line">            <span class="comment">//之后若t!=tail则tail已被修改过，设置p为tail，</span></span><br><span class="line">            <span class="comment">//若t==tail,则未被修改，则可能是tail后有两个node并且未来得及修改</span></span><br><span class="line">            <span class="comment">//或者tail后只有一个node不需要修改，这种情况p向后移动</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下图是我转载的对offer函数的各种情况的分解</p>
+<p><strong>单线程下的offer函数</strong></p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/offer单线程.jpg" alt="offer单线程情况"></p>
+<p><strong>多线程下的offer函数</strong></p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/offer(e" alt="offer函数多线程">多线程.jpg)</p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/offer(e" alt="offer多线程2">多线程2.jpg)</p>
+<h3 id="出队-poll函数"><a href="#出队-poll函数" class="headerlink" title="出队(poll函数)"></a>出队(poll函数)</h3><p>注意的点：</p>
 <ul>
-<li>CAS的三大问题<ol>
-<li>ABA问题</li>
-<li>循环时间长开销大</li>
-<li>只能保证一个共享变量的原子操作</li>
-</ol>
-</li>
+<li>注意CAS自旋设计</li>
+<li>head节点的item不一定为null</li>
 </ul>
-</li>
-<li><p><strong>使用锁机制实现原子操作</strong></p>
-<p>​        JVM内部实现了很多种锁机制，有偏向锁、轻量级锁和互斥锁。有意思的是除了偏向锁，JVM实现锁的方式都用了循环CAS，即当一个线程想进入同步块的时候使用循环CAS的方式来获取锁，当它退出同步块的时候使用循环CAS释放锁</p>
-</li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">poll</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    restartFromHead:</span><br><span class="line">    <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">        <span class="comment">// 因为 head 可能未被更新，可能被出队，所以从 head 开始用循环方式开始出队 Node</span></span><br><span class="line">        <span class="comment">// h 指向老的 head，p 指向当前认为的 head，q 指向 p 的 next</span></span><br><span class="line">        <span class="keyword">for</span> (Node&lt;E&gt; h = head, p = h, q;;) &#123;</span><br><span class="line">            E item = p.item;</span><br><span class="line">            <span class="comment">// 如果 item 非 null 说明 head 指向的 Node 还未出队</span></span><br><span class="line">        <span class="comment">// CAS 的将 item 设置为 null，哪个线程成功执行 CAS 就是哪个线程成功执行出队</span></span><br><span class="line">            <span class="keyword">if</span> (item != <span class="keyword">null</span> &amp;&amp; p.casItem(item, <span class="keyword">null</span>)) &#123;</span><br><span class="line">            <span class="comment">// 出队成功后判断 p 是否向后移动过，没移动则不更新 head </span></span><br><span class="line">            <span class="comment">// 因为每出队两个 Node 才更新一次 head</span></span><br><span class="line">                <span class="keyword">if</span> (p != h) <span class="comment">// hop two nodes at a time</span></span><br><span class="line">                <span class="comment">// 注意看到与 LinkedBlokcingQueue 不同 这里出队的可能是 head</span></span><br><span class="line">            <span class="comment">// 指向的节点而不一定是 head 的 next</span></span><br><span class="line">            <span class="comment">// 更新 head 时候需要判断队列是否为空，不空时能将 head 直接更新到 p.next</span></span><br><span class="line">                    updateHead(h, ((q = p.next) != <span class="keyword">null</span>) ? q : p);</span><br><span class="line">                <span class="keyword">return</span> item;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="comment">// 队列为空，则尝试更新 head 为 p 后直接返回 null</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> ((q = p.next) == <span class="keyword">null</span>) &#123;</span><br><span class="line">                updateHead(h, p);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (p == q)</span><br><span class="line">            <span class="comment">// p 的 next 指向自己说明 head 被出队需要再读 head 从头开始</span></span><br><span class="line">                <span class="keyword">continue</span> restartFromHead;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            <span class="comment">// 走到这里说明出队 head 竞争失败，并且队列非空且当前 p 指向的节点还在队列上</span></span><br><span class="line">            <span class="comment">// 所以尝试沿着 next 往后走一格继续尝试出队</span></span><br><span class="line">                p = q;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下图为转载的步骤分析：</p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/pull(" alt="pull单线程">获取单线程.jpg)</p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/pull获取多线程.jpg" alt="pull多线程"></p>
+<p><strong>pull和offer混合并发的情况</strong></p>
+<p><img src="https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/offer(e" alt="offer和pull混合并发">并发pull().jpg)</p>
+<h2 id="为何要采用HOPS-延迟更新的策略-的设计"><a href="#为何要采用HOPS-延迟更新的策略-的设计" class="headerlink" title="为何要采用HOPS(延迟更新的策略)的设计"></a>为何要采用HOPS(延迟更新的策略)的设计</h2><p>让tail节点永远作为队列的尾节点，这样实现代码量非常少，而且逻辑清晰和易懂。但是，这么做有个缺点，每次都需要使用循环CAS更新tail节点。如果能减少CAS更新tail节点的次数，就能提高入队的效率，所以doug lea使用hops变量来控制并减少tail节点的更新频率，并不是每次节点入队后都将tail节点更新成尾节点，而是当tail节点和尾节点的距离大于等于常量HOPS的值（默认等于1）时才更新tail节点，tail和尾节点的距离越长，使用CAS更新tail节点的次数就会越少，但是距离越长带来的负面效果就是每次入队时定位尾节点的时间就越长，因为循环体需要多循环一次来定位出尾节点，但是这样仍然能提高入队的效率，因为<strong>从本质上来看它通过增加对volatile变量的读操作来减少对volatile变量的写操作</strong>，而对volatile变量的写操作开销要远远大于读操作，所以入队效率会有所提升。</p>
+<h2 id="特点总结"><a href="#特点总结" class="headerlink" title="特点总结"></a>特点总结</h2><ol>
+<li>无界，有 OOM 风险；</li>
+<li>无锁，并发性能很高；</li>
+<li>没有阻塞接口，不可能阻塞到等待元素到来；</li>
+<li>无法获取队列长度精确值；</li>
 </ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://ylgrgyq.com/concurrent-linked-queue.html">https://ylgrgyq.com/concurrent-linked-queue.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Non-blocking_algorithm">https://en.wikipedia.org/wiki/Non-blocking_algorithm</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/stevenczp/p/6611041.html">https://www.cnblogs.com/stevenczp/p/6611041.html</a></li>
+<li>《并发编程的艺术》</li>
+</ul>
 
 
         <hr>
         <!-- Pager -->
         <ul class="pager">
           
-          <li class="previous">
-            <a href="/cn/java并发(2)/" data-toggle="tooltip" data-placement="top" title="《java并发编程的艺术》学习总结（2）">&larr; Previous Post</a>
-          </li>
-          
           
           <li class="next">
-            <a href="/cn/HashMap/" data-toggle="tooltip" data-placement="top" title="HashMap源码学习">Next Post &rarr;</a>
+            <a href="/cn/java并发(5)/" data-toggle="tooltip" data-placement="top" title="《java并发编程的艺术》学习总结（5）">Next Post &rarr;</a>
           </li>
           
         </ul>
@@ -562,7 +555,7 @@
       </a>
     </li>
     <li class="social-share-li">
-      <a target="_blank" class="social-share-icon" href="mailto:?subject=《java并发编程的艺术》学习总结（1）&body=Hi,I found this website and thought you might like it https://caecarxu.github.io/cn/java并发(1)/">
+      <a target="_blank" class="social-share-icon" href="mailto:?subject=《java并发编程的艺术》学习总结（6）&body=Hi,I found this website and thought you might like it https://caecarxu.github.io/cn/java并发(6)/">
         <i class="fa fa-envelope fa-1x" aria-hidden="true"></i>
       </a>
     </li>
@@ -600,7 +593,7 @@
         <div id="toc" class="toc-article">
         <strong class="toc-title">目录</strong>
         
-          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">java并发编程的底层实现原理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#volatile%E7%9A%84%E5%AE%9A%E4%B9%89%E4%B8%8E%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">volatile的定义与实现原理</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#synchronized%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%92%8C%E5%BA%94%E7%94%A8"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">synchronized的实现原理和应用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Java%E5%AF%B9%E8%B1%A1%E5%A4%B4"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">Java对象头</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E9%94%81%E7%9A%84%E5%8D%87%E7%BA%A7%E4%BA%8E%E5%AF%B9%E6%AF%94"><span class="toc-nav-number">1.2.2.</span> <span class="toc-nav-text">锁的升级于对比</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E5%81%8F%E5%90%91%E9%94%81"><span class="toc-nav-number">1.2.2.1.</span> <span class="toc-nav-text">偏向锁</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-nav-number">1.2.2.2.</span> <span class="toc-nav-text">轻量级锁</span></a></li><li class="toc-nav-item toc-nav-level-5"><a class="toc-nav-link" href="#%E9%87%8D%E9%87%8F%E7%BA%A7%E9%94%81"><span class="toc-nav-number">1.2.2.3.</span> <span class="toc-nav-text">重量级锁</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">原子操作的实现原理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">原子操作的相关术语</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E5%A4%84%E7%90%86%E5%99%A8%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">处理器实现原子操作</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#Java%E5%AE%9E%E7%8E%B0%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">Java实现原子操作的方法</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#ConcurrentLinkedQueue%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">ConcurrentLinkedQueue学习总结</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">简介</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">数据结构</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%9D%9E%E9%98%BB%E5%A1%9E%E7%AE%97%E6%B3%95"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">非阻塞算法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E9%98%BB%E5%A1%9E%E3%80%81%E6%97%A0%E9%94%81%E4%B8%8E%E6%97%A0%E7%AD%89%E5%BE%85%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">阻塞、无锁与无等待的区别</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%BD%BF%E7%94%A8CAS%E6%9D%A5%E4%BF%9D%E8%AF%81%E5%B9%B6%E5%8F%91%E4%B8%8B%E7%9A%84%E6%AD%A3%E7%A1%AE%E6%80%A7"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">使用CAS来保证并发下的正确性</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%B3%E4%BA%8EABA%E9%97%AE%E9%A2%98"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">关于ABA问题</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%85%B7%E4%BD%93%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">具体源码实现</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%85%A5%E9%98%9F-offer%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">入队(offer函数)</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#%E5%87%BA%E9%98%9F-poll%E5%87%BD%E6%95%B0"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">出队(poll函数)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E4%B8%BA%E4%BD%95%E8%A6%81%E9%87%87%E7%94%A8HOPS-%E5%BB%B6%E8%BF%9F%E6%9B%B4%E6%96%B0%E7%9A%84%E7%AD%96%E7%95%A5-%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">为何要采用HOPS(延迟更新的策略)的设计</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%89%B9%E7%82%B9%E6%80%BB%E7%BB%93"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">特点总结</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">参考资料</span></a></li></ol></li></ol>
         
         </div>
       </aside>
