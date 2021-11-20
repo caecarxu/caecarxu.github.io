@@ -599,7 +599,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ForkJoinTask task;<span class="comment">//ForkJoinTask是一个接口，不能是实例化，这里默认task是ForkJoinTask子类的实例对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//如果该方法返回true，说明任务执行过程抛出了异常或者已经被取消</span></span><br><span class="line"><span class="keyword">if</span>(task.isCompletedAbnormally)&#123;</span><br><span class="line">     <span class="comment">//返回Throwable对象，如果任务被取消，返回CancellationException异常，如果任务没出现异常或者没完成，则返回null</span></span><br><span class="line">     System.out.println(task.getException());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="参考资料">参考资料</h2>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://pdai.tech/md/java/thread/java-thread-x-juc-executor-ForkJoinPool.html#forkjoin%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B">https://pdai.tech/md/java/thread/java-thread-x-juc-executor-ForkJoinPool.html#forkjoin框架简介</a></li>
+<li><a target="_blank" rel="noopener" href="https://pdai.tech/md/java/thread/java-thread-x-juc-executor-ForkJoinPool.html">https://pdai.tech/md/java/thread/java-thread-x-juc-executor-ForkJoinPool.html</a></li>
 <li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6906424424967667725">https://juejin.cn/post/6906424424967667725</a></li>
 </ul>
 
