@@ -16,6 +16,20 @@
   </url>
   
   <url>
+    <loc>https://blog.mockingj.cn/categories/index.html</loc>
+    
+    <lastmod>2022-02-05</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.mockingj.cn/404.html</loc>
+    
+    <lastmod>2022-02-05</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.mockingj.cn/cn/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%81%9A%E9%9C%80%E6%B1%82/</loc>
     
     <lastmod>2022-01-21</lastmod>
@@ -82,20 +96,6 @@
     <loc>https://blog.mockingj.cn/cn/HashMap/</loc>
     
     <lastmod>2021-10-21</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mockingj.cn/404.html</loc>
-    
-    <lastmod>2021-10-20</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.mockingj.cn/categories/index.html</loc>
-    
-    <lastmod>2021-10-20</lastmod>
     
   </url>
   
@@ -186,13 +186,6 @@
   </url>
   
   <url>
-    <loc>https://blog.mockingj.cn/tags/java%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2022-03-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.mockingj.cn/tags/hugo/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>daily</changefreq>
@@ -208,6 +201,20 @@
   
   <url>
     <loc>https://blog.mockingj.cn/tags/blog/</loc>
+    <lastmod>2022-03-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mockingj.cn/tags/Hive%E5%BC%80%E5%8F%91/</loc>
+    <lastmod>2022-03-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mockingj.cn/tags/java%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -234,24 +241,10 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>https://blog.mockingj.cn/tags/Hive%E5%BC%80%E5%8F%91/</loc>
-    <lastmod>2022-03-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   
   <url>
     <loc>https://blog.mockingj.cn/categories/java/</loc>
-    <lastmod>2022-03-20</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.mockingj.cn/categories/java%E5%B9%B6%E5%8F%91/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -265,14 +258,21 @@
   </url>
   
   <url>
-    <loc>https://blog.mockingj.cn/categories/java%E5%BC%80%E5%8F%91/</loc>
+    <loc>https://blog.mockingj.cn/categories/Hive/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://blog.mockingj.cn/categories/Hive/</loc>
+    <loc>https://blog.mockingj.cn/categories/java%E5%B9%B6%E5%8F%91/</loc>
+    <lastmod>2022-03-20</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.mockingj.cn/categories/java%E5%BC%80%E5%8F%91/</loc>
     <lastmod>2022-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
