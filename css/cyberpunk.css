@@ -10259,11 +10259,6 @@ body {
   min-height: 100%;
   display: flex;
   flex-direction: column;
-  background-image: url("https://mockingjay-1257222092.cos.ap-guangzhou.myqcloud.com/IMG_1689.jpeg");
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-attachment: fixed;
-  background-size: 100% 100%;
 }
 body > .section {
   flex-grow: 1;
